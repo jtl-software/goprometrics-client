@@ -1,7 +1,7 @@
 {
-  "name": "jtl/GoPrometrics-client",
+  "name": "jtl/go-prometrics-client",
   "type": "library",
-  "description": "PHP-Client to use the JTL GoProm Service",
+  "description": "PHP-Client to use the JTL GoPrometrics Service",
   "license": "MIT",
   "require": {
     "php": ">=7.4",
