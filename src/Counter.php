@@ -24,10 +24,10 @@ class Counter
     /**
      * @param string $namespace
      * @param string $name
-     * @param TagList $tagList
+     * @param LabelList $tagList
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function count(string $namespace, string $name, TagList $tagList): void
+    public function count(string $namespace, string $name, LabelList $tagList): void
     {
         $tagStr = $this->createTagString($tagList);
         $this->client->request(
@@ -40,7 +40,7 @@ class Counter
         );
     }
 
-    private function createTagString(TagList $tagList): string
+    private function createTagString(LabelList $tagList): string
     {
         if (count($tagList) > 0) {
             $tagStrList = [];

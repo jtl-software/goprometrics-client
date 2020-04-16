@@ -11,24 +11,24 @@ namespace JTL\GoPrometrics\Client;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \JTL\GoPrometrics\Client\TagList
+ * @covers \JTL\GoPrometrics\Client\LabelList
  */
-class TagListTest extends TestCase
+class LabelListTest extends TestCase
 {
     public function testCanBeUsed(): void
     {
-        $taglist = new TagList();
-        $taglist->add(new Tag('foo', 'bar'));
+        $labelList = new LabelList();
+        $labelList->add(new Label('foo', 'bar'));
 
-        $this->assertInstanceOf(TagList::class, $taglist);
-        foreach ($taglist as $tag) {
-            $this->assertInstanceOf(Tag::class, $tag);
+        $this->assertInstanceOf(LabelList::class, $labelList);
+        foreach ($labelList as $tag) {
+            $this->assertInstanceOf(Label::class, $tag);
         }
     }
 
     public function testCanNotAddOtherObjects(): void
     {
-        $taglist = new TagList();
+        $taglist = new LabelList();
 
         $this->expectException(\InvalidArgumentException::class);
         $taglist->add(new \stdClass());

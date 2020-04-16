@@ -11,9 +11,9 @@ namespace JTL\GoPrometrics\Client;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \JTL\GoPrometrics\Client\Tag
+ * @covers \JTL\GoPrometrics\Client\Label
  */
-class TagTest extends TestCase
+class LabelTest extends TestCase
 {
 
     public function testCanBeUsed(): void
@@ -21,9 +21,9 @@ class TagTest extends TestCase
         $key = uniqid('key', true);
         $value = uniqid('value', true);
 
-        $tag = new Tag($key, $value);
+        $label = new Label($key, $value);
 
-        $this->assertSame($key, $tag->getKey());
-        $this->assertSame($value, $tag->getValue());
+        $this->assertSame($key, $label->getKey());
+        $this->assertSame($value, $label->getValue());
     }
 }

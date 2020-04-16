@@ -20,8 +20,8 @@ class CounterTest extends TestCase
     {
         $namespace = uniqid('namespace', true);
         $name = uniqid('name', true);
-        $tagList = new TagList();
-        $tagList[]  = new Tag('foo', 'bar');
+        $tagList = new LabelList();
+        $tagList[]  = new Label('foo', 'bar');
 
         $baseUri = uniqid('baseUri', true);
         $clientMock = $this->createMock(Client::class);

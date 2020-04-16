@@ -8,7 +8,7 @@
 
 namespace JTL\GoPrometrics\Client;
 
-class Tag
+class Label
 {
     private string $key;
     private string $value;

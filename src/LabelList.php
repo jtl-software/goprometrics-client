@@ -13,12 +13,12 @@ use JTL\Generic\GenericCollection;
 /**
  * Class TagList
  *
- * @method Tag offsetGet($offset)
+ * @method Label offsetGet($offset)
  */
-class TagList extends GenericCollection
+class LabelList extends GenericCollection
 {
     public function __construct()
     {
-        parent::__construct(Tag::class);
+        parent::__construct(Label::class);
     }
 }
