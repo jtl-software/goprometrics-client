@@ -25,7 +25,14 @@ class CounterTest extends TestCase
 
         $baseUri = uniqid('baseUri', true);
         $clientMock = $this->createMock(Client::class);
-        $clientMock->expects($this->once())->method('request')->with('PUT', "{$baseUri}/count/{$namespace}/{$name}/foo:bar");
+        $clientMock->expects($this->once())->method('request')->with(
+            'PUT',
+            "{$baseUri}/count/{$namespace}/{$name}",
+            [
+                'body' => "labels=foo:bar",
+                'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
+            ]
+        );
 
         $counter = new Counter($clientMock, $baseUri);
         $counter->count($namespace, $name, $tagList);
