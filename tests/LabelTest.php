@@ -15,7 +15,6 @@ use PHPUnit\Framework\TestCase;
  */
 class LabelTest extends TestCase
 {
-
     public function testCanBeUsed(): void
     {
         $key = uniqid('key', true);
