@@ -30,7 +30,14 @@ class Counter
     public function count(string $namespace, string $name, TagList $tagList): void
     {
         $tagStr = $this->createTagString($tagList);
-        $this->client->request('PUT', "{$this->baseUrl}/count/{$namespace}/{$name}{$tagStr}");
+        $this->client->request(
+            'PUT',
+            "{$this->baseUrl}/count/{$namespace}/{$name}",
+            [
+                'body' => "labels=$tagStr",
+                'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
+            ]
+        );
     }
 
     private function createTagString(TagList $tagList): string
@@ -40,7 +47,7 @@ class Counter
             foreach ($tagList as $tag) {
                 $tagStrList[] = "{$tag->getKey()}:{$tag->getValue()}";
             }
-            $tagStr = "/" . implode(',', $tagStrList);
+            $tagStr = implode(',', $tagStrList);
         }
 
         return $tagStr ?? '';
