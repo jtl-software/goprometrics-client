@@ -1,5 +1,5 @@
 {
-  "name": "jtl/go-prom-client",
+  "name": "jtl/GoPrometrics-client",
   "type": "library",
   "description": "PHP-Client to use the JTL GoProm Service",
   "license": "MIT",
@@ -20,13 +20,10 @@
   },
   "autoload": {
     "psr-4": {
-      "JTL\\GoProm\\Client\\": "src/"
+      "JTL\\GoPrometrics\\Client\\": "src/"
     }
   },
   "autoload-dev": {
-    "psr-4": {
-      "JTL\\GoProm\\Client\\": "src/"
-    }
   },
   "config": {
     "platform": {

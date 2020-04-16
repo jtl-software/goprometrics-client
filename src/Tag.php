@@ -6,7 +6,7 @@
  * Date: 2020-04-14
  */
 
-namespace JTL\GoProm\Client;
+namespace JTL\GoPrometrics\Client;
 
 class Tag
 {

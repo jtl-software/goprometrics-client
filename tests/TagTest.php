@@ -6,12 +6,12 @@
  * Date: 2020-04-16
  */
 
-namespace JTL\GoProm\Client;
+namespace JTL\GoPrometrics\Client;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \JTL\GoProm\Client\Tag
+ * @covers \JTL\GoPrometrics\Client\Tag
  */
 class TagTest extends TestCase
 {

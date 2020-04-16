@@ -6,13 +6,13 @@
  * Date: 2020-04-16
  */
 
-namespace JTL\GoProm\Client;
+namespace JTL\GoPrometrics\Client;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \JTL\GoProm\Client\Counter
+ * @covers \JTL\GoPrometrics\Client\Counter
  */
 class CounterTest extends TestCase
 {
