@@ -21,4 +21,13 @@ class LabelList extends GenericCollection
     {
         parent::__construct(Label::class);
     }
+
+    public static function create(array $itemList): LabelList
+    {
+        $labelList = new self();
+        foreach ($itemList as $key => $value) {
+            $labelList->add(new Label((string)$key, (string)$value));
+        }
+        return $labelList;
+    }
 }

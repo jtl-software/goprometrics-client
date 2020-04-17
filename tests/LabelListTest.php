@@ -33,4 +33,17 @@ class LabelListTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $taglist->add(new \stdClass());
     }
+
+    public function testCanBeCreatedFromArray(): void
+    {
+        $labelDataList = ['brand' => "bitburger", "type" => "pils", "alc" => "4.8"];
+
+        $labelList = LabelList::create($labelDataList);
+        $this->assertInstanceOf(LabelList::class, $labelList);
+        $this->assertSame(3, $labelList->count());
+        foreach ($labelList as $label) {
+            $this->assertTrue(isset($labelDataList[$label->getKey()]));
+            $this->assertSame($labelDataList[$label->getKey()], $label->getValue());
+        }
+    }
 }
