@@ -7,10 +7,10 @@ use GuzzleHttp\ClientInterface;
 /**
  * This File is part of JTL-Software
  *
- * User: avermeulen
- * Date: 2020-04-14
+ * User: Milanowicz
+ * Date: 2020-05-06
  */
-class Counter
+class Histogram
 {
     private ClientInterface $client;
     private string $baseUrl;
@@ -24,24 +24,37 @@ class Counter
     /**
      * @param string $namespace
      * @param string $name
-     * @param LabelList $tagList
+     * @param float $value
+     * @param array|float[] $buckets
+     * @param LabelList|null $tagList
      * @param string $help
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function count(string $namespace, string $name, ?LabelList $tagList = null, string $help = ''): void
-    {
+    public function observe(
+        string $namespace,
+        string $name,
+        float $value,
+        array $buckets = [0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.25, 0.5, 0.75, 1.0, 2.5, 5.0, 7.5, 10.0],
+        ?LabelList $tagList = null,
+        string $help = ''
+    ): void {
         $tagStr = $this->createTagString($tagList);
+        $bucketStr = $this->createBucketString($buckets);
         $this->client->request(
             'PUT',
-            "{$this->baseUrl}/count/{$namespace}/{$name}",
+            "{$this->baseUrl}/observe/{$namespace}/{$name}/{$value}",
             [
-                'body' => "labels=$tagStr&help=$help",
+                'body' => "labels=$tagStr&buckets={$bucketStr}&help=$help",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
     }
 
-    private function createTagString(?LabelList $tagList = null): string
+    /**
+     * @param LabelList|null $tagList
+     * @return string
+     */
+    protected function createTagString(?LabelList $tagList): string
     {
         if ($tagList === null) {
             return '';
@@ -56,5 +69,18 @@ class Counter
         }
 
         return $tagStr ?? '';
+    }
+
+    /**
+     * @param array $buckets
+     * @return string
+     */
+    private function createBucketString(array $buckets): string
+    {
+        $string = '';
+        foreach ($buckets as $bucket) {
+            $string .= (empty($string) ? $bucket : ',' . $bucket);
+        }
+        return $string;
     }
 }

@@ -2,7 +2,7 @@
 /**
  * This File is part of JTL-Software
  *
- * User: avermeulen
+ * User: Milanowicz
  * Date: 2020-04-16
  */
 
@@ -12,11 +12,11 @@ use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \JTL\GoPrometrics\Client\Counter
+ * @covers \JTL\GoPrometrics\Client\Histogram
  */
-class CounterTest extends TestCase
+class HistogramTest extends TestCase
 {
-    public function testCanCount(): void
+    public function testCanObserve(): void
     {
         $namespace = uniqid('namespace', true);
         $name = uniqid('name', true);
@@ -27,18 +27,18 @@ class CounterTest extends TestCase
         $clientMock = $this->createMock(Client::class);
         $clientMock->expects($this->once())->method('request')->with(
             'PUT',
-            "{$baseUri}/count/{$namespace}/{$name}",
+            "{$baseUri}/observe/{$namespace}/{$name}/0.002",
             [
-                'body' => "labels=foo:bar&help=testing it",
+                'body' => "labels=foo:bar&buckets=0.1,0.5,1.0,5.0&help=This could be helpful",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
 
-        $counter = new Counter($clientMock, $baseUri);
-        $counter->count($namespace, $name, $tagList, 'testing it');
+        $counter = new Histogram($clientMock, $baseUri);
+        $counter->observe($namespace, $name, 0.002, [0.1, 0.5, 1.0, 5.0], $tagList, 'This could be helpful');
     }
 
-    public function testCanCountWithoutLabels(): void
+    public function testCanObserveWithoutLabels(): void
     {
         $namespace = uniqid('namespace', true);
         $name = uniqid('name', true);
@@ -47,14 +47,14 @@ class CounterTest extends TestCase
         $clientMock = $this->createMock(Client::class);
         $clientMock->expects($this->once())->method('request')->with(
             'PUT',
-            "{$baseUri}/count/{$namespace}/{$name}",
+            "{$baseUri}/observe/{$namespace}/{$name}/0.002",
             [
-                'body' => "labels=&help=",
+                'body' => "labels=&buckets=0.1,0.5,1.0,5.0&help=This could be helpful",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
 
-        $counter = new Counter($clientMock, $baseUri);
-        $counter->count($namespace, $name);
+        $counter = new Histogram($clientMock, $baseUri);
+        $counter->observe($namespace, $name, 0.002, [0.1, 0.5, 1.0, 5.0], null, 'This could be helpful');
     }
 }
