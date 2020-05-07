@@ -22,6 +22,10 @@ class LabelList extends GenericCollection
         parent::__construct(Label::class);
     }
 
+    /**
+     * @param array $itemList
+     * @return LabelList
+     */
     public static function create(array $itemList): LabelList
     {
         $labelList = new self();
@@ -29,5 +33,21 @@ class LabelList extends GenericCollection
             $labelList->add(new Label((string)$key, (string)$value));
         }
         return $labelList;
+    }
+
+    /**
+     * @return string
+     */
+    public function toString(): string
+    {
+        if (count($this->itemList) > 0) {
+            $tagStrList = [];
+            foreach ($this->itemList as $tag) {
+                $tagStrList[] = "{$tag->getKey()}:{$tag->getValue()}";
+            }
+            $tagStr = implode(',', $tagStrList);
+        }
+
+        return $tagStr ?? '';
     }
 }

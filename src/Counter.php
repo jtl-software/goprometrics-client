@@ -30,7 +30,7 @@ class Counter
      */
     public function count(string $namespace, string $name, ?LabelList $tagList = null, string $help = ''): void
     {
-        $tagStr = $this->createTagString($tagList);
+        $tagStr = $tagList !== null ? $tagList->toString() : '';
         $this->client->request(
             'PUT',
             "{$this->baseUrl}/count/{$namespace}/{$name}",
@@ -39,22 +39,5 @@ class Counter
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
-    }
-
-    private function createTagString(?LabelList $tagList = null): string
-    {
-        if ($tagList === null) {
-            return '';
-        }
-
-        if (count($tagList) > 0) {
-            $tagStrList = [];
-            foreach ($tagList as $tag) {
-                $tagStrList[] = "{$tag->getKey()}:{$tag->getValue()}";
-            }
-            $tagStr = implode(',', $tagStrList);
-        }
-
-        return $tagStr ?? '';
     }
 }

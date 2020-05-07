@@ -46,4 +46,13 @@ class LabelListTest extends TestCase
             $this->assertSame($labelDataList[$label->getKey()], $label->getValue());
         }
     }
+
+    public function testCanLabelsConvertToString(): void
+    {
+        $labelList = new LabelList();
+        $this->assertEmpty($labelList->toString());
+
+        $labelList->add(new Label('foo', 'bar'));
+        $this->assertEquals('foo:bar', $labelList->toString());
+    }
 }

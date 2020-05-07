@@ -38,7 +38,7 @@ class Histogram
         ?LabelList $tagList = null,
         string $help = ''
     ): void {
-        $tagStr = $this->createTagString($tagList);
+        $tagStr = $tagList !== null ? $tagList->toString() : '';
         $bucketStr = $this->createBucketString($buckets);
         $this->client->request(
             'PUT',
@@ -48,27 +48,6 @@ class Histogram
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
-    }
-
-    /**
-     * @param LabelList|null $tagList
-     * @return string
-     */
-    protected function createTagString(?LabelList $tagList): string
-    {
-        if ($tagList === null) {
-            return '';
-        }
-
-        if (count($tagList) > 0) {
-            $tagStrList = [];
-            foreach ($tagList as $tag) {
-                $tagStrList[] = "{$tag->getKey()}:{$tag->getValue()}";
-            }
-            $tagStr = implode(',', $tagStrList);
-        }
-
-        return $tagStr ?? '';
     }
 
     /**
