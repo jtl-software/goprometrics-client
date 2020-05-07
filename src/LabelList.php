@@ -38,7 +38,7 @@ class LabelList extends GenericCollection
     /**
      * @return string
      */
-    public function toString(): string
+    public function __toString(): string
     {
         if (count($this->itemList) > 0) {
             $tagStrList = [];

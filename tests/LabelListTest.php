@@ -50,9 +50,9 @@ class LabelListTest extends TestCase
     public function testCanLabelsConvertToString(): void
     {
         $labelList = new LabelList();
-        $this->assertEmpty($labelList->toString());
+        $this->assertEmpty($labelList->__toString());
 
         $labelList->add(new Label('foo', 'bar'));
-        $this->assertEquals('foo:bar', $labelList->toString());
+        $this->assertEquals('foo:bar', $labelList->__toString());
     }
 }

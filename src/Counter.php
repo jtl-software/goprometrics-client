@@ -28,9 +28,9 @@ class Counter
      * @param string $help
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function count(string $namespace, string $name, ?LabelList $tagList = null, string $help = ''): void
+    public function count(string $namespace, string $name, LabelList $tagList = null, string $help = ''): void
     {
-        $tagStr = $tagList !== null ? $tagList->toString() : '';
+        $tagStr = $tagList !== null ? $tagList->__toString() : '';
         $this->client->request(
             'PUT',
             "{$this->baseUrl}/count/{$namespace}/{$name}",

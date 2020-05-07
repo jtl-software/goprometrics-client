@@ -34,12 +34,12 @@ class Histogram
         string $namespace,
         string $name,
         float $value,
-        array $buckets = [0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.25, 0.5, 0.75, 1.0, 2.5, 5.0, 7.5, 10.0],
-        ?LabelList $tagList = null,
+        array $buckets = [],
+        LabelList $tagList = null,
         string $help = ''
     ): void {
-        $tagStr = $tagList !== null ? $tagList->toString() : '';
-        $bucketStr = $this->createBucketString($buckets);
+        $tagStr = $tagList !== null ? $tagList->__toString() : '';
+        $bucketStr = implode(',', $buckets);
         $this->client->request(
             'PUT',
             "{$this->baseUrl}/observe/{$namespace}/{$name}/{$value}",
@@ -48,18 +48,5 @@ class Histogram
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
-    }
-
-    /**
-     * @param array $buckets
-     * @return string
-     */
-    private function createBucketString(array $buckets): string
-    {
-        $string = '';
-        foreach ($buckets as $bucket) {
-            $string .= (empty($string) ? $bucket : ',' . $bucket);
-        }
-        return $string;
     }
 }
