@@ -29,7 +29,7 @@ class HistogramTest extends TestCase
             'PUT',
             "{$baseUri}/observe/{$namespace}/{$name}/0.002",
             [
-                'body' => "labels=foo:bar&buckets=0.1,0.5,1.0,5.0&help=This could be helpful",
+                'body' => "labels=foo:bar&buckets=0.1,0.5,1,5&help=This could be helpful",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
@@ -49,7 +49,7 @@ class HistogramTest extends TestCase
             'PUT',
             "{$baseUri}/observe/{$namespace}/{$name}/0.002",
             [
-                'body' => "labels=&buckets=0.1,0.5,1.0,5.0&help=This could be helpful",
+                'body' => "labels=&buckets=0.1,0.5,1,5&help=This could be helpful",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
