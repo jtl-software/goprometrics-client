@@ -35,7 +35,7 @@ class Counter
             'PUT',
             "{$this->baseUrl}/count/{$namespace}/{$name}",
             [
-                'body' => "labels=$tagStr&help=$help",
+                'body' => "labels={$tagStr}&help={$help}",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );

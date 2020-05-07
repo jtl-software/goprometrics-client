@@ -44,7 +44,7 @@ class Histogram
             'PUT',
             "{$this->baseUrl}/observe/{$namespace}/{$name}/{$value}",
             [
-                'body' => "labels=$tagStr&buckets={$bucketStr}&help=$help",
+                'body' => "labels={$tagStr}&buckets={$bucketStr}&help={$help}",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
