@@ -34,4 +34,32 @@ $histogram->observe('BEER', 'BITBURGER', 0.33, $bucketList , $labelList);
 
 //counter with labels and help text
 $histogram->observe('BEER', 'BITBURGER', 0.33, $bucketList, $labelList, 'It could help');
+
+
+//simple gauge
+$gauge = new Gauge(new Client(), "http://127.0.0.1:9111");
+$gauge->inc('BEER', 'BITBURGER'); // Increase by one
+$gauge->dec('BEER', 'BITBURGER'); // Decrease by one
+
+$gauge->incBy('BEER', 'BITBURGER', 3); // Increase by three
+$gauge->decBy('BEER', 'BITBURGER', 3); // Decrease by three
+
+//gauge with labels
+$labelList = new LabelList();
+$labelList->add(new Label('type', 'Pils');
+$labelList->add(new Label('alc', '4.8');
+$gauge = new Gauge(new Client(), "http://127.0.0.1:9111");
+$gauge->inc('BEER', 'BITBURGER', $labelList);
+$gauge->dec('BEER', 'BITBURGER', $labelList);
+
+$gauge->incBy('BEER', 'BITBURGER', 2, $labelList);
+$gauge->decBy('BEER', 'BITBURGER', 2, $labelList);
+
+//counter with labels and help text
+$gauge->inc('BEER', 'BITBURGER', $labelList, 'It could help');
+$gauge->dec('BEER', 'BITBURGER', $labelList, 'It could help');
+
+$gauge->incBy('BEER', 'BITBURGER', 3, $labelList, 'It could help');
+$gauge->decBy('BEER', 'BITBURGER', 3, $labelList, 'It could help');
+
 ```
