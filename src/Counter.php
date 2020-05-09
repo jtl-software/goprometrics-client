@@ -30,7 +30,7 @@ class Counter
      */
     public function count(string $namespace, string $name, LabelList $tagList = null, string $help = ''): void
     {
-        $tagStr = $tagList !== null ? $tagList->__toString() : '';
+        $tagStr = (string) $tagList;
         $this->client->request(
             'PUT',
             "{$this->baseUrl}/count/{$namespace}/{$name}",

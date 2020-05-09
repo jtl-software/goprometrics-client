@@ -38,7 +38,7 @@ class Histogram
         LabelList $tagList = null,
         string $help = ''
     ): void {
-        $tagStr = $tagList !== null ? $tagList->__toString() : '';
+        $tagStr = (string) $tagList;
         $bucketStr = implode(',', $buckets);
         $this->client->request(
             'PUT',
