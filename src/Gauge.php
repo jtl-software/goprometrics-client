@@ -104,7 +104,7 @@ class Gauge
         LabelList $tagList = null,
         string $help = ''
     ): void {
-        $tagStr = $tagList !== null ? $tagList->__toString() : '';
+        $tagStr = (string) $tagList;
         $this->client->request(
             'PUT',
             "{$this->baseUrl}/gauge/{$namespace}/{$name}/{$value}",
