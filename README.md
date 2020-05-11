@@ -32,7 +32,7 @@ $labelList->add(new Label('alc', '4.8');
 $histogram = new Histogram(new Client(), "http://127.0.0.1:9111");
 $histogram->observe('BEER', 'BITBURGER', 0.33, $bucketList , $labelList);
 
-//counter with labels and help text
+//histogramm with labels and help text
 $histogram->observe('BEER', 'BITBURGER', 0.33, $bucketList, $labelList, 'It could help');
 
 
@@ -55,7 +55,7 @@ $gauge->dec('BEER', 'BITBURGER', $labelList);
 $gauge->incBy('BEER', 'BITBURGER', 2, $labelList);
 $gauge->decBy('BEER', 'BITBURGER', 2, $labelList);
 
-//counter with labels and help text
+//gauge with labels and help text
 $gauge->inc('BEER', 'BITBURGER', $labelList, 'It could help');
 $gauge->dec('BEER', 'BITBURGER', $labelList, 'It could help');
 
