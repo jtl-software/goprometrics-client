@@ -6,12 +6,12 @@
   "require": {
     "php": ">=7.4",
     "ext-curl": "*",
-    "ext-json": "*"
+    "ext-json": "*",
+    "jtl/php-generic-collection": "^0.3.0",
+    "guzzlehttp/guzzle": "^6.5"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.16",
-    "jtl/php-generic-collection": "^0.3.0",
-    "guzzlehttp/guzzle": "^6.5",
     "phpunit/phpunit": "^9.1"
   },
   "suggest": {

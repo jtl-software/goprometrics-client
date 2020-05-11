@@ -7,10 +7,10 @@ use GuzzleHttp\ClientInterface;
 /**
  * This File is part of JTL-Software
  *
- * User: avermeulen
- * Date: 2020-04-14
+ * User: Milanowicz
+ * Date: 2020-05-06
  */
-class Counter
+class Histogram
 {
     private ClientInterface $client;
     private string $baseUrl;
@@ -24,18 +24,27 @@ class Counter
     /**
      * @param string $namespace
      * @param string $name
-     * @param LabelList $tagList
+     * @param float $value
+     * @param array|float[] $buckets
+     * @param LabelList|null $tagList
      * @param string $help
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function count(string $namespace, string $name, LabelList $tagList = null, string $help = ''): void
-    {
+    public function observe(
+        string $namespace,
+        string $name,
+        float $value,
+        array $buckets = [],
+        LabelList $tagList = null,
+        string $help = ''
+    ): void {
         $tagStr = (string) $tagList;
+        $bucketStr = implode(',', $buckets);
         $this->client->request(
             'PUT',
-            "{$this->baseUrl}/count/{$namespace}/{$name}",
+            "{$this->baseUrl}/observe/{$namespace}/{$name}/{$value}",
             [
-                'body' => "labels={$tagStr}&help={$help}",
+                'body' => "labels={$tagStr}&buckets={$bucketStr}&help={$help}",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
