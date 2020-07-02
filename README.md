@@ -49,6 +49,7 @@ $gauge = new Gauge(new Client(), "http://127.0.0.1:9111");
 $gauge->inc('BEER', 'BITBURGER'); // Increase by one
 $gauge->dec('BEER', 'BITBURGER'); // Decrease by one
 
+$gauge->set('BEER', 'BITBURGER', 3); // Set value to three
 $gauge->incBy('BEER', 'BITBURGER', 3); // Increase by three
 $gauge->decBy('BEER', 'BITBURGER', 3); // Decrease by three
 
@@ -60,6 +61,7 @@ $gauge = new Gauge(new Client(), "http://127.0.0.1:9111");
 $gauge->inc('BEER', 'BITBURGER', $labelList);
 $gauge->dec('BEER', 'BITBURGER', $labelList);
 
+$gauge->set('BEER', 'BITBURGER', 3, $labelList);
 $gauge->incBy('BEER', 'BITBURGER', 2, $labelList);
 $gauge->decBy('BEER', 'BITBURGER', 2, $labelList);
 
@@ -67,6 +69,7 @@ $gauge->decBy('BEER', 'BITBURGER', 2, $labelList);
 $gauge->inc('BEER', 'BITBURGER', $labelList, 'It could help');
 $gauge->dec('BEER', 'BITBURGER', $labelList, 'It could help');
 
+$gauge->set('BEER', 'BITBURGER', 3, $labelList, 'It could help');
 $gauge->incBy('BEER', 'BITBURGER', 3, $labelList, 'It could help');
 $gauge->decBy('BEER', 'BITBURGER', 3, $labelList, 'It could help');
 
