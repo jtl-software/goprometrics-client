@@ -13,8 +13,8 @@ $counter->counter('BEER', 'BITBURGER');
 
 //counter with labels
 $labelList = new LabelList();
-$labelList->add(new Label('type', 'Pils');
-$labelList->add(new Label('alc', '4.8');
+$labelList->add(new Label('type', 'Pils'));
+$labelList->add(new Label('alc', '4.8'));
 $counter = new Counter(new Client(), "http://127.0.0.1:9111");
 $counter->counter('BEER', 'BITBURGER', $labelList);
 
@@ -32,8 +32,8 @@ $histogram->observe('BEER', 'BITBURGER', 0.33, $bucketList);
 
 //histogramm with labels
 $labelList = new LabelList();
-$labelList->add(new Label('type', 'Pils');
-$labelList->add(new Label('alc', '4.8');
+$labelList->add(new Label('type', 'Pils'));
+$labelList->add(new Label('alc', '4.8'));
 $histogram = new Histogram(new Client(), "http://127.0.0.1:9111");
 $histogram->observe('BEER', 'BITBURGER', 0.33, $bucketList , $labelList);
 
@@ -55,8 +55,8 @@ $gauge->decBy('BEER', 'BITBURGER', 3); // Decrease by three
 
 //gauge with labels
 $labelList = new LabelList();
-$labelList->add(new Label('type', 'Pils');
-$labelList->add(new Label('alc', '4.8');
+$labelList->add(new Label('type', 'Pils'));
+$labelList->add(new Label('alc', '4.8'));
 $gauge = new Gauge(new Client(), "http://127.0.0.1:9111");
 $gauge->inc('BEER', 'BITBURGER', $labelList);
 $gauge->dec('BEER', 'BITBURGER', $labelList);
