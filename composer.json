@@ -1,6 +1,6 @@
 {
   "name": "jtl/go-prometrics-client",
-  "type": "library",
+  "type": "jtl-library",
   "description": "PHP-Client to use the JTL GoPrometrics Service",
   "license": "MIT",
   "require": {
