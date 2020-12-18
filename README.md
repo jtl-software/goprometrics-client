@@ -1,7 +1,7 @@
 JTL/GoPrometrics Client
 =======================
 
-![Build and UnitTesting](https://github.com/jtl-software/goprometrics-client/workflows/UnitTesting/badge.svg?branch=UpdatePackagePhp8)
+![Build and Unit Testing](https://github.com/jtl-software/goprometrics-client/workflows/UnitTesting/badge.svg?branch=master)
 
 
 # Usage
