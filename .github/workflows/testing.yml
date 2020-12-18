@@ -10,6 +10,8 @@ jobs:
         with:
           php-version: '7.4'
 
+      - uses: actions/checkout@v2
+
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
@@ -25,6 +27,8 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.0'
+
+      - uses: actions/checkout@v2
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
