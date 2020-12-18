@@ -1,6 +1,10 @@
 JTL/GoPrometrics Client
 =======================
 
+![Build PHP 7.4](https://github.com/jtl-software/goprometrics-client/workflows/build_74/badge.svg?branch=UpdatePackagePhp8)
+![Build PHP 8.0](https://github.com/jtl-software/goprometrics-client/workflows/build_80/badge.svg?branch=UpdatePackagePhp8)
+
+
 # Usage
 This library use [semantic visioning](http://semver.org/). You can use composer to install `jtl/go-prometrics-client` in your project.
 
