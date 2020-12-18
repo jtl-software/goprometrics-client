@@ -1,6 +1,9 @@
 JTL/GoPrometrics Client
 =======================
 
+![Build and Unit Testing](https://github.com/jtl-software/goprometrics-client/workflows/UnitTesting/badge.svg?branch=master)
+
+
 # Usage
 This library use [semantic visioning](http://semver.org/). You can use composer to install `jtl/go-prometrics-client` in your project.
 
