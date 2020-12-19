@@ -38,5 +38,3 @@ jobs:
 
       - name: "Run test suite"
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
-        env:
-          XDEBUG_MODE=coverage
