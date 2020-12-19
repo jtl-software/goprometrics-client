@@ -3,37 +3,40 @@ name: UnitTesting
 on: [push]
 
 jobs:
-  runs-on: ubuntu-latest
+  tests:
+    name: "Tests"
 
-  strategy:
-    fail-fast: false
-    matrix:
-      php-version:
-        - "7.4"
-        - "8.0"
-      coverage-driver:
-        - "xdebug"
-        - "xdebug3"
+    runs-on: ubuntu-latest
 
-  steps:
-    - name: "Install PHP"
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: "${{ matrix.php-version }}"
-        coverage: "${{ matrix.coverage-driver }}"
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - "7.4"
+          - "8.0"
+        coverage-driver:
+          - "xdebug"
+          - "xdebug3"
 
-    - name: "Checkout"
-      uses: actions/checkout@v2
+    steps:
+      - name: "Install PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "${{ matrix.php-version }}"
+          coverage: "${{ matrix.coverage-driver }}"
 
-    - name: "Install dependencies"
-      run: composer install --prefer-dist --no-progress
+      - name: "Checkout"
+        uses: actions/checkout@v2
 
-    - name: "Check Code Style"
-      run: composer phpcs-dry
-      env:
-        PHP_CS_FIXER_IGNORE_ENV: 1
+      - name: "Install dependencies"
+        run: composer install --prefer-dist --no-progress
 
-    - name: "Run test suite"
-      run: vendor/bin/phpunit --coverage-clover=coverage.xml
-      env:
-        XDEBUG_MODE=coverage
+      - name: "Check Code Style"
+        run: composer phpcs-dry
+        env:
+          PHP_CS_FIXER_IGNORE_ENV: 1
+
+      - name: "Run test suite"
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+        env:
+          XDEBUG_MODE=coverage
