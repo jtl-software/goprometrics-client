@@ -14,20 +14,13 @@ jobs:
         php-version:
           - "7.4"
           - "8.0"
-        coverage-driver:
-          - "pcov"
-          - "xdebug"
-          - "xdebug3"
-        exclude:
-          - php-version: "8.0"
-            coverage-driver: "xdebug"
 
     steps:
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
         with:
           php-version: "${{ matrix.php-version }}"
-          coverage: "${{ matrix.coverage-driver }}"
+          coverage: xdebug3
 
       - name: "Checkout"
         uses: actions/checkout@v2
@@ -42,3 +35,8 @@ jobs:
 
       - name: "Run test suite"
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
+
+#      - name: "Send coverage to codecov.io"
+#        uses: codecov/codecov-action@v1
+#        with:
+#          token: ${{ secrets.CODECOV_TOKEN }}

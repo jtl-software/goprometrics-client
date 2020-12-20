@@ -6,7 +6,8 @@
          backupGlobals="false"
          colors="true"
          forceCoversAnnotation="true"
-         beStrictAboutOutputDuringTests="true">
+         beStrictAboutOutputDuringTests="true"
+         verbose="true">
   <coverage>
     <include>
       <directory>src</directory>
