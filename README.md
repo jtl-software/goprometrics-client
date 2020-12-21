@@ -2,6 +2,7 @@ JTL/GoPrometrics Client
 =======================
 
 ![Build and Unit Testing](https://github.com/jtl-software/goprometrics-client/workflows/UnitTesting/badge.svg?branch=master)
+![](https://img.shields.io/github/v/tag/jtl-software/goprometrics-client)
 
 
 # Usage

@@ -3,40 +3,40 @@ name: UnitTesting
 on: [push]
 
 jobs:
-  build_74:
+  tests:
+    name: "Tests"
+
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - "7.4"
+          - "8.0"
+
     steps:
-      - uses: shivammathur/setup-php@v2
+      - name: "Install PHP"
+        uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: "${{ matrix.php-version }}"
+          coverage: xdebug3
 
-      - uses: actions/checkout@v2
+      - name: "Checkout"
+        uses: actions/checkout@v2
 
-      - name: Install dependencies
+      - name: "Install dependencies"
         run: composer install --prefer-dist --no-progress
 
-      - name: Check Code Style
-        run: composer phpcs-dry
-
-      - name: Run test suite
-        run: vendor/bin/phpunit
-
-  build_80:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.0'
-
-      - uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
-
-      - name: Check Code Style
+      - name: "Check Code Style"
         run: composer phpcs-dry
         env:
           PHP_CS_FIXER_IGNORE_ENV: 1
 
-      - name: Run test suite
-        run: vendor/bin/phpunit
+      - name: "Run test suite"
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+
+#      - name: "Send coverage to codecov.io"
+#        uses: codecov/codecov-action@v1
+#        with:
+#          token: ${{ secrets.CODECOV_TOKEN }}
