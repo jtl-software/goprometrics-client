@@ -8,12 +8,12 @@ use GuzzleHttp\ClientInterface;
 
 abstract class AbstractClient
 {
-    protected ?ClientInterface $client;
-    protected string $baseUrl = '';
+    private ClientInterface $client;
+    protected string $baseUrl;
 
     public function __construct(
-        ?ClientInterface $client = null,
-        string $baseUrl = ''
+        ClientInterface $client,
+        string $baseUrl
     ) {
         $this->client = $client;
         $this->baseUrl = $baseUrl;
@@ -22,21 +22,23 @@ abstract class AbstractClient
     /**
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    protected function sendToServer(
-        string $url = '',
+    protected function send(
+        string $url,
         string $body = '',
-        string $restType = 'PUT',
-        array $headers = ['Content-Type' => "application/x-www-form-urlencoded"]
+        string $httpMethod = 'PUT',
+        array $headers = []
     ): void {
-        if ($this->client !== null) {
-            $this->client->request(
-                $restType,
-                $url,
-                [
-                    'body' => $body,
-                    'headers' => $headers
-                ]
-            );
+        if (!isset($headers['Content-Type'])) {
+            $headers['Content-Type'] = "application/x-www-form-urlencoded";
         }
+
+        $this->client->request(
+            $httpMethod,
+            $url,
+            [
+                'body' => $body,
+                'headers' => $headers
+            ]
+        );
     }
 }

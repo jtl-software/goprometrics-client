@@ -31,7 +31,7 @@ class Histogram extends AbstractClient implements Histograming
     ): void {
         $tagStr = (string) $tagList;
         $bucketStr = implode(',', $buckets);
-        $this->sendToServer(
+        $this->send(
             "{$this->baseUrl}/observe/{$namespace}/{$name}/{$value}",
             "labels={$tagStr}&buckets={$bucketStr}&help={$help}"
         );

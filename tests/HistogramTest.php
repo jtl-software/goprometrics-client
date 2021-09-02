@@ -58,32 +58,4 @@ class HistogramTest extends TestCase
         $counter = new Histogram($clientMock, $baseUri);
         $counter->observe($namespace, $name, 0.002, [0.1, 0.5, 1.0, 5.0], null, 'This could be helpful');
     }
-
-    public function testCanObserveByDummy(): void
-    {
-        $namespace = uniqid('namespace', true);
-        $name = uniqid('name', true);
-        $tagList = new LabelList();
-        $tagList[]  = new Label('foo', 'bar');
-
-        $counter = new Histogram();
-        $counter->observe($namespace, $name, 0.002, [0.1, 0.5, 1.0, 5.0], $tagList, 'This could be helpful');
-        $reflector = new ReflectionClass($counter);
-        $method = $reflector->getProperty('client');
-        $method->setAccessible(true);
-        $this->assertNull($method->getValue($counter));
-    }
-
-    public function testCanObserveWithoutLabelsByDummy(): void
-    {
-        $namespace = uniqid('namespace', true);
-        $name = uniqid('name', true);
-
-        $counter = new Histogram();
-        $counter->observe($namespace, $name, 0.002, [0.1, 0.5, 1.0, 5.0], null, 'This could be helpful');
-        $reflector = new ReflectionClass($counter);
-        $method = $reflector->getProperty('client');
-        $method->setAccessible(true);
-        $this->assertNull($method->getValue($counter));
-    }
 }

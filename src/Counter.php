@@ -22,7 +22,7 @@ class Counter extends AbstractClient implements Counting
     public function count(string $namespace, string $name, LabelList $tagList = null, string $help = ''): void
     {
         $tagStr = (string) $tagList;
-        $this->sendToServer(
+        $this->send(
             "{$this->baseUrl}/count/{$namespace}/{$name}",
             "labels={$tagStr}&help={$help}"
         );
