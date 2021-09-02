@@ -2,7 +2,6 @@
 
 namespace JTL\GoPrometrics\Client;
 
-use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 
 /**
@@ -11,17 +10,8 @@ use GuzzleHttp\Exception\GuzzleException;
  * User: Milanowicz
  * Date: 2020-05-06
  */
-class Histogram implements HistogramInterface
+class Histogram extends AbstractClient implements Histograming
 {
-    private ClientInterface $client;
-    private string $baseUrl;
-
-    public function __construct(ClientInterface $client, string $baseUrl)
-    {
-        $this->client = $client;
-        $this->baseUrl = $baseUrl;
-    }
-
     /**
      * @param string $namespace
      * @param string $name
@@ -41,13 +31,9 @@ class Histogram implements HistogramInterface
     ): void {
         $tagStr = (string) $tagList;
         $bucketStr = implode(',', $buckets);
-        $this->client->request(
-            'PUT',
+        $this->sendToServer(
             "{$this->baseUrl}/observe/{$namespace}/{$name}/{$value}",
-            [
-                'body' => "labels={$tagStr}&buckets={$bucketStr}&help={$help}",
-                'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
-            ]
+            "labels={$tagStr}&buckets={$bucketStr}&help={$help}"
         );
     }
 }

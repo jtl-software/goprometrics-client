@@ -125,4 +125,64 @@ class GaugeTest extends TestCase
         $counter = new Gauge($clientMock, $baseUri);
         $counter->set($namespace, $name, 2, $tagList, 'This could be helpful');
     }
+
+    public function testCanIncByDummy(): void
+    {
+        $namespace = uniqid('namespace', true);
+        $name = uniqid('name', true);
+        $tagList = new LabelList();
+        $tagList[] = new Label('foo', 'bar');
+
+        $counter = new Gauge();
+        $counter->inc($namespace, $name, $tagList, 'This could be helpful');
+        $this->assertNull($counter->getClient());
+    }
+
+    public function testCanIncByByDummy(): void
+    {
+        $namespace = uniqid('namespace', true);
+        $name = uniqid('name', true);
+        $tagList = new LabelList();
+        $tagList[] = new Label('foo', 'bar');
+
+        $counter = new Gauge();
+        $counter->incBy($namespace, $name, 2, $tagList, 'This could be helpful');
+        $this->assertNull($counter->getClient());
+    }
+
+    public function testCanDecByDummy(): void
+    {
+        $namespace = uniqid('namespace', true);
+        $name = uniqid('name', true);
+        $tagList = new LabelList();
+        $tagList[] = new Label('foo', 'bar');
+
+        $counter = new Gauge();
+        $counter->dec($namespace, $name, $tagList, 'This could be helpful');
+        $this->assertNull($counter->getClient());
+    }
+
+    public function testCanDecByByDummy(): void
+    {
+        $namespace = uniqid('namespace', true);
+        $name = uniqid('name', true);
+        $tagList = new LabelList();
+        $tagList[] = new Label('foo', 'bar');
+
+        $counter = new Gauge();
+        $counter->decBy($namespace, $name, 2, $tagList, 'This could be helpful');
+        $this->assertNull($counter->getClient());
+    }
+
+    public function testCanSetByDummy(): void
+    {
+        $namespace = uniqid('namespace', true);
+        $name = uniqid('name', true);
+        $tagList = new LabelList();
+        $tagList[] = new Label('foo', 'bar');
+
+        $counter = new Gauge();
+        $counter->set($namespace, $name, 2, $tagList, 'This could be helpful');
+        $this->assertNull($counter->getClient());
+    }
 }

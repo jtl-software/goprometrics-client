@@ -2,7 +2,6 @@
 
 namespace JTL\GoPrometrics\Client;
 
-use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 
 /**
@@ -11,17 +10,8 @@ use GuzzleHttp\Exception\GuzzleException;
  * User: Milanowicz
  * Date: 2020-05-07
  */
-class Gauge implements GaugeInterface
+class Gauge extends AbstractClient implements Gauging
 {
-    private ClientInterface $client;
-    private string $baseUrl;
-
-    public function __construct(ClientInterface $client, string $baseUrl)
-    {
-        $this->client = $client;
-        $this->baseUrl = $baseUrl;
-    }
-
     /**
      * @param string $namespace
      * @param string $name
@@ -127,13 +117,9 @@ class Gauge implements GaugeInterface
     ): void {
         $tagStr = (string)$tagList;
         $useSetStr = $useSet ? '1' : 0;
-        $this->client->request(
-            'PUT',
+        $this->sendToServer(
             "{$this->baseUrl}/gauge/{$namespace}/{$name}/{$value}",
-            [
-                'body' => "labels={$tagStr}&help={$help}&useSet={$useSetStr}",
-                'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
-            ]
+            "labels={$tagStr}&help={$help}&useSet={$useSetStr}"
         );
     }
 }
