@@ -10,6 +10,7 @@ namespace JTL\GoPrometrics\Client;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * @covers \JTL\GoPrometrics\Client\Gauge
@@ -135,7 +136,10 @@ class GaugeTest extends TestCase
 
         $counter = new Gauge();
         $counter->inc($namespace, $name, $tagList, 'This could be helpful');
-        $this->assertNull($counter->getClient());
+        $reflector = new ReflectionClass($counter);
+        $method = $reflector->getProperty('client');
+        $method->setAccessible(true);
+        $this->assertNull($method->getValue($counter));
     }
 
     public function testCanIncByByDummy(): void
@@ -147,7 +151,10 @@ class GaugeTest extends TestCase
 
         $counter = new Gauge();
         $counter->incBy($namespace, $name, 2, $tagList, 'This could be helpful');
-        $this->assertNull($counter->getClient());
+        $reflector = new ReflectionClass($counter);
+        $method = $reflector->getProperty('client');
+        $method->setAccessible(true);
+        $this->assertNull($method->getValue($counter));
     }
 
     public function testCanDecByDummy(): void
@@ -159,7 +166,10 @@ class GaugeTest extends TestCase
 
         $counter = new Gauge();
         $counter->dec($namespace, $name, $tagList, 'This could be helpful');
-        $this->assertNull($counter->getClient());
+        $reflector = new ReflectionClass($counter);
+        $method = $reflector->getProperty('client');
+        $method->setAccessible(true);
+        $this->assertNull($method->getValue($counter));
     }
 
     public function testCanDecByByDummy(): void
@@ -171,7 +181,10 @@ class GaugeTest extends TestCase
 
         $counter = new Gauge();
         $counter->decBy($namespace, $name, 2, $tagList, 'This could be helpful');
-        $this->assertNull($counter->getClient());
+        $reflector = new ReflectionClass($counter);
+        $method = $reflector->getProperty('client');
+        $method->setAccessible(true);
+        $this->assertNull($method->getValue($counter));
     }
 
     public function testCanSetByDummy(): void
@@ -183,6 +196,9 @@ class GaugeTest extends TestCase
 
         $counter = new Gauge();
         $counter->set($namespace, $name, 2, $tagList, 'This could be helpful');
-        $this->assertNull($counter->getClient());
+        $reflector = new ReflectionClass($counter);
+        $method = $reflector->getProperty('client');
+        $method->setAccessible(true);
+        $this->assertNull($method->getValue($counter));
     }
 }

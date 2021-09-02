@@ -10,6 +10,7 @@ namespace JTL\GoPrometrics\Client;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * @covers \JTL\GoPrometrics\Client\Counter
@@ -67,7 +68,10 @@ class CounterTest extends TestCase
 
         $counter = new Counter();
         $counter->count($namespace, $name, $tagList, 'testing it');
-        $this->assertNull($counter->getClient());
+        $reflector = new ReflectionClass($counter);
+        $method = $reflector->getProperty('client');
+        $method->setAccessible(true);
+        $this->assertNull($method->getValue($counter));
     }
 
     public function testCanCountWithoutLabelsByDummy(): void
@@ -77,6 +81,9 @@ class CounterTest extends TestCase
 
         $counter = new Counter();
         $counter->count($namespace, $name);
-        $this->assertNull($counter->getClient());
+        $reflector = new ReflectionClass($counter);
+        $method = $reflector->getProperty('client');
+        $method->setAccessible(true);
+        $this->assertNull($method->getValue($counter));
     }
 }

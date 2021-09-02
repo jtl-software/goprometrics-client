@@ -10,6 +10,7 @@ namespace JTL\GoPrometrics\Client;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * @covers \JTL\GoPrometrics\Client\Histogram
@@ -67,7 +68,10 @@ class HistogramTest extends TestCase
 
         $counter = new Histogram();
         $counter->observe($namespace, $name, 0.002, [0.1, 0.5, 1.0, 5.0], $tagList, 'This could be helpful');
-        $this->assertNull($counter->getClient());
+        $reflector = new ReflectionClass($counter);
+        $method = $reflector->getProperty('client');
+        $method->setAccessible(true);
+        $this->assertNull($method->getValue($counter));
     }
 
     public function testCanObserveWithoutLabelsByDummy(): void
@@ -77,6 +81,9 @@ class HistogramTest extends TestCase
 
         $counter = new Histogram();
         $counter->observe($namespace, $name, 0.002, [0.1, 0.5, 1.0, 5.0], null, 'This could be helpful');
-        $this->assertNull($counter->getClient());
+        $reflector = new ReflectionClass($counter);
+        $method = $reflector->getProperty('client');
+        $method->setAccessible(true);
+        $this->assertNull($method->getValue($counter));
     }
 }

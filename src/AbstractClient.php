@@ -8,7 +8,7 @@ use GuzzleHttp\ClientInterface;
 
 abstract class AbstractClient
 {
-    private ?ClientInterface $client;
+    protected ?ClientInterface $client;
     protected string $baseUrl = '';
 
     public function __construct(
@@ -17,11 +17,6 @@ abstract class AbstractClient
     ) {
         $this->client = $client;
         $this->baseUrl = $baseUrl;
-    }
-
-    public function getClient(): ?ClientInterface
-    {
-        return $this->client;
     }
 
     /**
@@ -33,13 +28,15 @@ abstract class AbstractClient
         string $restType = 'PUT',
         array $headers = ['Content-Type' => "application/x-www-form-urlencoded"]
     ): void {
-        $this->client?->request(
-            $restType,
-            $url,
-            [
-                'body' => $body,
-                'headers' => $headers
-            ]
-        );
+        if ($this->client !== null) {
+            $this->client->request(
+                $restType,
+                $url,
+                [
+                    'body' => $body,
+                    'headers' => $headers
+                ]
+            );
+        }
     }
 }
