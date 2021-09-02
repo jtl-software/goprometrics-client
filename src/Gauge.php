@@ -3,6 +3,7 @@
 namespace JTL\GoPrometrics\Client;
 
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * This File is part of JTL-Software
@@ -10,7 +11,7 @@ use GuzzleHttp\ClientInterface;
  * User: Milanowicz
  * Date: 2020-05-07
  */
-class Gauge
+class Gauge implements GaugeInterface
 {
     private ClientInterface $client;
     private string $baseUrl;
@@ -26,7 +27,7 @@ class Gauge
      * @param string $name
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function inc(
         string $namespace,
@@ -43,7 +44,7 @@ class Gauge
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function incBy(
         string $namespace,
@@ -60,7 +61,7 @@ class Gauge
      * @param string $name
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function dec(
         string $namespace,
@@ -77,7 +78,7 @@ class Gauge
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function decBy(
         string $namespace,
@@ -95,7 +96,7 @@ class Gauge
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function set(
         string $namespace,
@@ -113,7 +114,8 @@ class Gauge
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @param bool $useSet
+     * @throws GuzzleException
      */
     private function sendRequest(
         string $namespace,

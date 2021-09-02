@@ -3,6 +3,7 @@
 namespace JTL\GoPrometrics\Client;
 
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * This File is part of JTL-Software
@@ -10,7 +11,7 @@ use GuzzleHttp\ClientInterface;
  * User: avermeulen
  * Date: 2020-04-14
  */
-class Counter
+class Counter implements CounterInterface
 {
     private ClientInterface $client;
     private string $baseUrl;
@@ -24,9 +25,9 @@ class Counter
     /**
      * @param string $namespace
      * @param string $name
-     * @param LabelList $tagList
+     * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function count(string $namespace, string $name, LabelList $tagList = null, string $help = ''): void
     {

@@ -3,6 +3,7 @@
 namespace JTL\GoPrometrics\Client;
 
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * This File is part of JTL-Software
@@ -10,7 +11,7 @@ use GuzzleHttp\ClientInterface;
  * User: Milanowicz
  * Date: 2020-05-06
  */
-class Histogram
+class Histogram implements HistogramInterface
 {
     private ClientInterface $client;
     private string $baseUrl;
@@ -28,7 +29,7 @@ class Histogram
      * @param array|float[] $buckets
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function observe(
         string $namespace,
