@@ -8,6 +8,7 @@
 
 namespace JTL\GoPrometrics\Client;
 
+use Countable;
 use JTL\Generic\GenericCollection;
 
 /**
@@ -40,14 +41,16 @@ class LabelList extends GenericCollection
      */
     public function __toString(): string
     {
+        $tagStr = '';
         if (count($this->itemList) > 0) {
             $tagStrList = [];
-            foreach ($this->itemList as $tag) {
-                $tagStrList[] = "{$tag->getKey()}:{$tag->getValue()}";
+            /** @var \JTL\GoPrometrics\Client\Label $label */
+            foreach ($this->itemList as $label) {
+                $tagStrList[] = "{$label->getKey()}:{$label->getValue()}";
             }
             $tagStr = implode(',', $tagStrList);
         }
 
-        return $tagStr ?? '';
+        return $tagStr;
     }
 }
