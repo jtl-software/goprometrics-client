@@ -58,32 +58,4 @@ class CounterTest extends TestCase
         $counter = new Counter($clientMock, $baseUri);
         $counter->count($namespace, $name);
     }
-
-    public function testCanCountByDummy(): void
-    {
-        $namespace = uniqid('namespace', true);
-        $name = uniqid('name', true);
-        $tagList = new LabelList();
-        $tagList[]  = new Label('foo', 'bar');
-
-        $counter = new Counter();
-        $counter->count($namespace, $name, $tagList, 'testing it');
-        $reflector = new ReflectionClass($counter);
-        $method = $reflector->getProperty('client');
-        $method->setAccessible(true);
-        $this->assertNull($method->getValue($counter));
-    }
-
-    public function testCanCountWithoutLabelsByDummy(): void
-    {
-        $namespace = uniqid('namespace', true);
-        $name = uniqid('name', true);
-
-        $counter = new Counter();
-        $counter->count($namespace, $name);
-        $reflector = new ReflectionClass($counter);
-        $method = $reflector->getProperty('client');
-        $method->setAccessible(true);
-        $this->assertNull($method->getValue($counter));
-    }
 }
