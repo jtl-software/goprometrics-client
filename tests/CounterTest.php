@@ -1,16 +1,11 @@
-<?php declare(strict_types=1);
-/**
- * This File is part of JTL-Software
- *
- * User: avermeulen
- * Date: 2020-04-16
- */
+<?php
+
+declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 
 /**
  * @covers \JTL\GoPrometrics\Client\Counter

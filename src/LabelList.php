@@ -1,14 +1,9 @@
-<?php declare(strict_types=1);
-/**
- * This File is part of JTL-Software
- *
- * User: avermeulen
- * Date: 2020-04-14
- */
+<?php
+
+declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
-use Countable;
 use JTL\Generic\GenericCollection;
 
 /**

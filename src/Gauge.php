@@ -1,15 +1,9 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
-use GuzzleHttp\Exception\GuzzleException;
-
-/**
- * This File is part of JTL-Software
- *
- * User: Milanowicz
- * Date: 2020-05-07
- */
 class Gauge extends AbstractClient implements Gauging
 {
     /**
@@ -17,7 +11,7 @@ class Gauge extends AbstractClient implements Gauging
      * @param string $name
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function inc(
         string $namespace,
@@ -34,7 +28,7 @@ class Gauge extends AbstractClient implements Gauging
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function incBy(
         string $namespace,
@@ -51,7 +45,7 @@ class Gauge extends AbstractClient implements Gauging
      * @param string $name
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function dec(
         string $namespace,
@@ -68,7 +62,7 @@ class Gauge extends AbstractClient implements Gauging
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function decBy(
         string $namespace,
@@ -86,7 +80,7 @@ class Gauge extends AbstractClient implements Gauging
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function set(
         string $namespace,
@@ -105,7 +99,7 @@ class Gauge extends AbstractClient implements Gauging
      * @param LabelList|null $tagList
      * @param string $help
      * @param bool $useSet
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     private function sendRequest(
         string $namespace,

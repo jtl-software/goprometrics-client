@@ -1,15 +1,9 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
-use GuzzleHttp\Exception\GuzzleException;
-
-/**
- * This File is part of JTL-Software
- *
- * User: Milanowicz
- * Date: 2020-05-06
- */
 class Histogram extends AbstractClient implements Histograming
 {
     /**
@@ -19,7 +13,7 @@ class Histogram extends AbstractClient implements Histograming
      * @param array|float[] $buckets
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function observe(
         string $namespace,

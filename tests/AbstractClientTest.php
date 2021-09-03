@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace JTL\GoPrometrics\Client;
 
 use GuzzleHttp\ClientInterface;
@@ -31,7 +33,10 @@ class AbstractClientTest extends TestCase
                 '/foo/bar',
                 [
                     'body' => 'my-body-rocks',
-                    'headers' => ['Content-Type' => "application/x-www-form-urlencoded", 'X-TEST-HEADER' => 'some-value']
+                    'headers' => [
+                        'Content-Type' => "application/x-www-form-urlencoded",
+                        'X-TEST-HEADER' => 'some-value'
+                    ]
                 ]
             );
 

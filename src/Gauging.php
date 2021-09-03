@@ -1,8 +1,8 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
-
-use GuzzleHttp\Exception\GuzzleException;
 
 interface Gauging
 {
@@ -11,7 +11,7 @@ interface Gauging
      * @param string $name
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function inc(
         string $namespace,
@@ -26,7 +26,7 @@ interface Gauging
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function incBy(
         string $namespace,
@@ -41,7 +41,7 @@ interface Gauging
      * @param string $name
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function dec(
         string $namespace,
@@ -56,7 +56,7 @@ interface Gauging
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function decBy(
         string $namespace,
@@ -72,7 +72,7 @@ interface Gauging
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function set(
         string $namespace,
