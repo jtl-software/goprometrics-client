@@ -1,8 +1,8 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
-
-use GuzzleHttp\Exception\GuzzleException;
 
 interface GaugeInterface
 {
@@ -11,9 +11,14 @@ interface GaugeInterface
      * @param string $name
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function inc(string $namespace, string $name, LabelList $tagList = null, string $help = ''): void;
+    public function inc(
+        string $namespace,
+        string $name,
+        LabelList $tagList = null,
+        string $help = ''
+    ): void;
 
     /**
      * @param string $namespace
@@ -21,18 +26,29 @@ interface GaugeInterface
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function incBy(string $namespace, string $name, float $value, LabelList $tagList = null, string $help = ''): void;
+    public function incBy(
+        string $namespace,
+        string $name,
+        float $value,
+        LabelList $tagList = null,
+        string $help = ''
+    ): void;
 
     /**
      * @param string $namespace
      * @param string $name
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function dec(string $namespace, string $name, LabelList $tagList = null, string $help = ''): void;
+    public function dec(
+        string $namespace,
+        string $name,
+        LabelList $tagList = null,
+        string $help = ''
+    ): void;
 
     /**
      * @param string $namespace
@@ -40,9 +56,15 @@ interface GaugeInterface
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function decBy(string $namespace, string $name, float $value, LabelList $tagList = null, string $help = ''): void;
+    public function decBy(
+        string $namespace,
+        string $name,
+        float $value,
+        LabelList $tagList = null,
+        string $help = ''
+    ): void;
 
     /**
      * @param string $namespace
@@ -50,7 +72,13 @@ interface GaugeInterface
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function set(string $namespace, string $name, float $value, LabelList $tagList = null, string $help = ''): void;
+    public function set(
+        string $namespace,
+        string $name,
+        float $value,
+        LabelList $tagList = null,
+        string $help = ''
+    ): void;
 }

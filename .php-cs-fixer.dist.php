@@ -5,4 +5,4 @@ $finder = PhpCsFixer\Finder::create()
 
 return (new PhpCsFixer\Config())
     ->setFinder($finder)
-    ->setRules(['@PSR2' => true]);
+    ->setRules(['@PSR12' => true]);

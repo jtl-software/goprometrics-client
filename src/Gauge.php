@@ -1,33 +1,17 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\GuzzleException;
-
-/**
- * This File is part of JTL-Software
- *
- * User: Milanowicz
- * Date: 2020-05-07
- */
-class Gauge implements GaugeInterface
+class Gauge extends AbstractClient implements GaugeInterface
 {
-    private ClientInterface $client;
-    private string $baseUrl;
-
-    public function __construct(ClientInterface $client, string $baseUrl)
-    {
-        $this->client = $client;
-        $this->baseUrl = $baseUrl;
-    }
-
     /**
      * @param string $namespace
      * @param string $name
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function inc(
         string $namespace,
@@ -44,7 +28,7 @@ class Gauge implements GaugeInterface
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function incBy(
         string $namespace,
@@ -61,7 +45,7 @@ class Gauge implements GaugeInterface
      * @param string $name
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function dec(
         string $namespace,
@@ -78,7 +62,7 @@ class Gauge implements GaugeInterface
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function decBy(
         string $namespace,
@@ -96,7 +80,7 @@ class Gauge implements GaugeInterface
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function set(
         string $namespace,
@@ -115,7 +99,7 @@ class Gauge implements GaugeInterface
      * @param LabelList|null $tagList
      * @param string $help
      * @param bool $useSet
-     * @throws GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     private function sendRequest(
         string $namespace,
@@ -125,15 +109,10 @@ class Gauge implements GaugeInterface
         string $help = '',
         bool $useSet = false
     ): void {
-        $tagStr = (string)$tagList;
         $useSetStr = $useSet ? '1' : 0;
-        $this->client->request(
-            'PUT',
+        $this->send(
             "{$this->baseUrl}/gauge/{$namespace}/{$name}/{$value}",
-            [
-                'body' => "labels={$tagStr}&help={$help}&useSet={$useSetStr}",
-                'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
-            ]
+            "labels={$tagList}&help={$help}&useSet={$useSetStr}"
         );
     }
 }

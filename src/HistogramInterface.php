@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
@@ -12,5 +14,12 @@ interface HistogramInterface
      * @param LabelList|null $tagList
      * @param string $help
      */
-    public function observe(string $namespace, string $name, float $value, array $buckets = [], LabelList $tagList = null, string $help = ''): void;
+    public function observe(
+        string $namespace,
+        string $name,
+        float $value,
+        array $buckets = [],
+        LabelList $tagList = null,
+        string $help = ''
+    ): void;
 }

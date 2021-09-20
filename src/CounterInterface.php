@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
@@ -10,5 +12,10 @@ interface CounterInterface
      * @param LabelList|null $tagList
      * @param string $help
      */
-    public function count(string $namespace, string $name, LabelList $tagList = null, string $help = ''): void;
+    public function count(
+        string $namespace,
+        string $name,
+        LabelList $tagList = null,
+        string $help = ''
+    ): void;
 }
