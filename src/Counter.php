@@ -19,10 +19,9 @@ class Counter extends AbstractClient implements Counting
         LabelList $tagList = null,
         string $help = ''
     ): void {
-        $tagStr = (string) $tagList;
         $this->send(
             "{$this->baseUrl}/count/{$namespace}/{$name}",
-            "labels={$tagStr}&help={$help}"
+            "labels={$tagList}&help={$help}"
         );
     }
 }

@@ -34,11 +34,17 @@ jobs:
         env:
           PHP_CS_FIXER_IGNORE_ENV: 1
 
-      - name: "Run test suite"
-        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+      - name: "Run PHP Static Analysis Tool"
+        run: vendor/bin/phpstan
 
       - name: "Run static analysis"
         run: vendor/bin/psalm
+
+      - name: "Run test suite"
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+
+      - name: "Run mutation tests"
+        run: vendor/bin/infection
 
 #      - name: "Send coverage to codecov.io"
 #        uses: codecov/codecov-action@v1

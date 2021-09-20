@@ -26,7 +26,7 @@ class LabelList extends GenericCollection
     {
         $labelList = new self();
         foreach ($itemList as $key => $value) {
-            $labelList->add(new Label((string)$key, (string)$value));
+            $labelList->add(new Label($key, $value));
         }
         return $labelList;
     }
@@ -36,16 +36,10 @@ class LabelList extends GenericCollection
      */
     public function __toString(): string
     {
-        $tagStr = '';
-        if (count($this->itemList) > 0) {
-            $tagStrList = [];
-            /** @var \JTL\GoPrometrics\Client\Label $label */
-            foreach ($this->itemList as $label) {
-                $tagStrList[] = "{$label->getKey()}:{$label->getValue()}";
-            }
-            $tagStr = implode(',', $tagStrList);
+        $tagStrList = [];
+        foreach ($this->itemList as $label) {
+            $tagStrList[] = "{$label->getKey()}:{$label->getValue()}";
         }
-
-        return $tagStr;
+        return implode(',', $tagStrList);
     }
 }

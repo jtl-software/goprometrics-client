@@ -109,11 +109,10 @@ class Gauge extends AbstractClient implements Gauging
         string $help = '',
         bool $useSet = false
     ): void {
-        $tagStr = (string)$tagList;
         $useSetStr = $useSet ? '1' : 0;
         $this->send(
             "{$this->baseUrl}/gauge/{$namespace}/{$name}/{$value}",
-            "labels={$tagStr}&help={$help}&useSet={$useSetStr}"
+            "labels={$tagList}&help={$help}&useSet={$useSetStr}"
         );
     }
 }
