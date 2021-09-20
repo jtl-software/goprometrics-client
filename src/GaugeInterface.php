@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
-class Gauge extends AbstractClient implements GaugeInterface
+interface GaugeInterface
 {
     /**
      * @param string $namespace
@@ -18,9 +18,7 @@ class Gauge extends AbstractClient implements GaugeInterface
         string $name,
         LabelList $tagList = null,
         string $help = ''
-    ): void {
-        $this->sendRequest($namespace, $name, 1, $tagList, $help);
-    }
+    ): void;
 
     /**
      * @param string $namespace
@@ -36,9 +34,7 @@ class Gauge extends AbstractClient implements GaugeInterface
         float $value,
         LabelList $tagList = null,
         string $help = ''
-    ): void {
-        $this->sendRequest($namespace, $name, $value, $tagList, $help);
-    }
+    ): void;
 
     /**
      * @param string $namespace
@@ -52,9 +48,7 @@ class Gauge extends AbstractClient implements GaugeInterface
         string $name,
         LabelList $tagList = null,
         string $help = ''
-    ): void {
-        $this->sendRequest($namespace, $name, -1, $tagList, $help);
-    }
+    ): void;
 
     /**
      * @param string $namespace
@@ -70,9 +64,7 @@ class Gauge extends AbstractClient implements GaugeInterface
         float $value,
         LabelList $tagList = null,
         string $help = ''
-    ): void {
-        $this->sendRequest($namespace, $name, $value * (-1), $tagList, $help);
-    }
+    ): void;
 
     /**
      * @param string $namespace
@@ -88,31 +80,5 @@ class Gauge extends AbstractClient implements GaugeInterface
         float $value,
         LabelList $tagList = null,
         string $help = ''
-    ): void {
-        $this->sendRequest($namespace, $name, $value, $tagList, $help, true);
-    }
-
-    /**
-     * @param string $namespace
-     * @param string $name
-     * @param float $value
-     * @param LabelList|null $tagList
-     * @param string $help
-     * @param bool $useSet
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    private function sendRequest(
-        string $namespace,
-        string $name,
-        float $value,
-        LabelList $tagList = null,
-        string $help = '',
-        bool $useSet = false
-    ): void {
-        $useSetStr = $useSet ? '1' : 0;
-        $this->send(
-            "{$this->baseUrl}/gauge/{$namespace}/{$name}/{$value}",
-            "labels={$tagList}&help={$help}&useSet={$useSetStr}"
-        );
-    }
+    ): void;
 }

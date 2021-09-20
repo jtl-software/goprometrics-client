@@ -1,10 +1,6 @@
-<?php declare(strict_types=1);
-/**
- * This File is part of JTL-Software
- *
- * User: Milanowicz
- * Date: 2020-05-07
- */
+<?php
+
+declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 

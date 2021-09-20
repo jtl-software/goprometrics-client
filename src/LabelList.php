@@ -1,10 +1,6 @@
-<?php declare(strict_types=1);
-/**
- * This File is part of JTL-Software
- *
- * User: avermeulen
- * Date: 2020-04-14
- */
+<?php
+
+declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
@@ -30,7 +26,7 @@ class LabelList extends GenericCollection
     {
         $labelList = new self();
         foreach ($itemList as $key => $value) {
-            $labelList->add(new Label((string)$key, (string)$value));
+            $labelList->add(new Label($key, $value));
         }
         return $labelList;
     }
@@ -40,14 +36,10 @@ class LabelList extends GenericCollection
      */
     public function __toString(): string
     {
-        if (count($this->itemList) > 0) {
-            $tagStrList = [];
-            foreach ($this->itemList as $tag) {
-                $tagStrList[] = "{$tag->getKey()}:{$tag->getValue()}";
-            }
-            $tagStr = implode(',', $tagStrList);
+        $tagStrList = [];
+        foreach ($this->itemList as $label) {
+            $tagStrList[] = "{$label->getKey()}:{$label->getValue()}";
         }
-
-        return $tagStr ?? '';
+        return implode(',', $tagStrList);
     }
 }

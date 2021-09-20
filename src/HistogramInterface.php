@@ -4,24 +4,22 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
-class Counter extends AbstractClient implements CounterInterface
+interface HistogramInterface
 {
     /**
      * @param string $namespace
      * @param string $name
+     * @param float $value
+     * @param array $buckets
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function count(
+    public function observe(
         string $namespace,
         string $name,
+        float $value,
+        array $buckets = [],
         LabelList $tagList = null,
         string $help = ''
-    ): void {
-        $this->send(
-            "{$this->baseUrl}/count/{$namespace}/{$name}",
-            "labels={$tagList}&help={$help}"
-        );
-    }
+    ): void;
 }

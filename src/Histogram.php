@@ -1,26 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
-use GuzzleHttp\ClientInterface;
-
-/**
- * This File is part of JTL-Software
- *
- * User: Milanowicz
- * Date: 2020-05-06
- */
-class Histogram
+class Histogram extends AbstractClient implements HistogramInterface
 {
-    private ClientInterface $client;
-    private string $baseUrl;
-
-    public function __construct(ClientInterface $client, string $baseUrl)
-    {
-        $this->client = $client;
-        $this->baseUrl = $baseUrl;
-    }
-
     /**
      * @param string $namespace
      * @param string $name
@@ -38,15 +23,10 @@ class Histogram
         LabelList $tagList = null,
         string $help = ''
     ): void {
-        $tagStr = (string) $tagList;
         $bucketStr = implode(',', $buckets);
-        $this->client->request(
-            'PUT',
+        $this->send(
             "{$this->baseUrl}/observe/{$namespace}/{$name}/{$value}",
-            [
-                'body' => "labels={$tagStr}&buckets={$bucketStr}&help={$help}",
-                'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
-            ]
+            "labels={$tagList}&buckets={$bucketStr}&help={$help}"
         );
     }
 }
