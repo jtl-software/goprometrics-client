@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
-class Counter extends AbstractClient implements Counting
+class Counter extends AbstractClient implements CounterInterface
 {
     /**
      * @param string $namespace

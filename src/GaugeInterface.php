@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
-interface Gauging
+interface GaugeInterface
 {
     /**
      * @param string $namespace

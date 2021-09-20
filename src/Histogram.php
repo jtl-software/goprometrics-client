@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
-class Histogram extends AbstractClient implements Histograming
+class Histogram extends AbstractClient implements HistogramInterface
 {
     /**
      * @param string $namespace

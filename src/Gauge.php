@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
-class Gauge extends AbstractClient implements Gauging
+class Gauge extends AbstractClient implements GaugeInterface
 {
     /**
      * @param string $namespace
