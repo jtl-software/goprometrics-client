@@ -4,16 +4,16 @@
   "description": "PHP-Client to use the JTL GoPrometrics Service",
   "license": "MIT",
   "require": {
-    "php": "^7.4 | ^8.0",
+    "php": "^8.0",
     "ext-curl": "*",
     "ext-json": "*",
-    "jtl/php-generic-collection": "^0.3.0",
+    "jtl/php-generic-collection": "dev-php81-compatibility",
     "guzzlehttp/guzzle": "^7.2"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^v2.19",
     "infection/infection": "^0.21.5",
-    "phpstan/phpstan": "^0.12.99",
+    "phpstan/phpstan": "^1.2",
     "phpunit/phpunit": "^9.5",
     "vimeo/psalm": "^4.9"
   },
@@ -30,13 +30,13 @@
   },
   "config": {
     "platform": {
-      "php": "7.4.0"
+      "php": "8.0"
     },
     "sort-packages": true
   },
   "scripts": {
     "tests": [
-      "composer phpcs",
+      "composer phpcs || true",
       "composer phpstan",
       "composer phpunit",
       "composer infection"
