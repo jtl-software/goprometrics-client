@@ -12,9 +12,8 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "7.4"
           - "8.0"
-        #  - "8.1"
+          - "8.1"
 
     steps:
       - name: "Install PHP"
@@ -44,7 +43,7 @@ jobs:
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - name: "Run mutation tests"
-        run: vendor/bin/infection
+        run: vendor/bin/infection --min-covered-msi=98 --min-msi=98
 
 #      - name: "Send coverage to codecov.io"
 #        uses: codecov/codecov-action@v1
