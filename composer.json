@@ -4,10 +4,10 @@
   "description": "PHP-Client to use the JTL GoPrometrics Service",
   "license": "MIT",
   "require": {
-    "php": "^7.4 | ^8.0",
+    "php": "^8.0 | ^8.1",
     "ext-curl": "*",
     "ext-json": "*",
-    "jtl/php-generic-collection": "^0.3.0",
+    "jtl/php-generic-collection": "dev-EA-4270",
     "guzzlehttp/guzzle": "^7.2"
   },
   "require-dev": {
@@ -30,7 +30,7 @@
   },
   "config": {
     "platform": {
-      "php": "7.4.0"
+      "php": "8.0.2"
     },
     "sort-packages": true
   },
