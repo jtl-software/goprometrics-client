@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "96f12924c147eb96612bdc361bfad223",
+    "content-hash": "2c97f5857268b2015a94a540a0235cbc",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -331,16 +331,16 @@
         },
         {
             "name": "jtl/php-generic-collection",
-            "version": "0.4.0",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jtl-software/php-generic-collection.git",
-                "reference": "d7e1faa08ac3f2e61395835b659f6604b3bce338"
+                "reference": "199de7bd3001431094ce65c945260ce6fcf0e60a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jtl-software/php-generic-collection/zipball/d7e1faa08ac3f2e61395835b659f6604b3bce338",
-                "reference": "d7e1faa08ac3f2e61395835b659f6604b3bce338",
+                "url": "https://api.github.com/repos/jtl-software/php-generic-collection/zipball/199de7bd3001431094ce65c945260ce6fcf0e60a",
+                "reference": "199de7bd3001431094ce65c945260ce6fcf0e60a",
                 "shasum": ""
             },
             "require-dev": {
@@ -364,9 +364,9 @@
             "description": "An implementation of a generic collection for PHP",
             "support": {
                 "issues": "https://github.com/jtl-software/php-generic-collection/issues",
-                "source": "https://github.com/jtl-software/php-generic-collection/tree/0.4.0"
+                "source": "https://github.com/jtl-software/php-generic-collection/tree/0.4.1"
             },
-            "time": "2022-01-14T10:49:17+00:00"
+            "time": "2022-01-14T13:38:30+00:00"
         },
         {
             "name": "psr/http-client",
