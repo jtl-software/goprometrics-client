@@ -331,16 +331,16 @@
         },
         {
             "name": "jtl/php-generic-collection",
-            "version": "0.4.1",
+            "version": "0.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jtl-software/php-generic-collection.git",
-                "reference": "199de7bd3001431094ce65c945260ce6fcf0e60a"
+                "reference": "246d25c0baeed4ab4efa27417aa3be12e5206143"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jtl-software/php-generic-collection/zipball/199de7bd3001431094ce65c945260ce6fcf0e60a",
-                "reference": "199de7bd3001431094ce65c945260ce6fcf0e60a",
+                "url": "https://api.github.com/repos/jtl-software/php-generic-collection/zipball/246d25c0baeed4ab4efa27417aa3be12e5206143",
+                "reference": "246d25c0baeed4ab4efa27417aa3be12e5206143",
                 "shasum": ""
             },
             "require-dev": {
@@ -364,9 +364,9 @@
             "description": "An implementation of a generic collection for PHP",
             "support": {
                 "issues": "https://github.com/jtl-software/php-generic-collection/issues",
-                "source": "https://github.com/jtl-software/php-generic-collection/tree/0.4.1"
+                "source": "https://github.com/jtl-software/php-generic-collection/tree/0.4.6"
             },
-            "time": "2022-01-14T13:38:30+00:00"
+            "time": "2022-01-17T15:23:47+00:00"
         },
         {
             "name": "psr/http-client",
@@ -6163,5 +6163,5 @@
     "platform-overrides": {
         "php": "8.0"
     },
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
