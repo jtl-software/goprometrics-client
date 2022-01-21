@@ -32,7 +32,11 @@
     "platform": {
       "php": "8.0"
     },
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true,
+      "infection/extension-installer": true
+    }
   },
   "scripts": {
     "tests": [
@@ -42,7 +46,7 @@
       "composer infection"
     ],
     "infection": [
-      "vendor/bin/infection -s -j4"
+      "vendor/bin/infection -s -j4 --min-covered-msi=98 --min-msi=98"
     ],
     "phpunit": [
       "vendor/bin/phpunit"
