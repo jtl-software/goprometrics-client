@@ -11,7 +11,7 @@
     "guzzlehttp/guzzle": "^7.2"
   },
   "require-dev": {
-    "friendsofphp/php-cs-fixer": "^v2.19",
+    "friendsofphp/php-cs-fixer": "^v3.5",
     "infection/infection": "^0.26.2",
     "phpstan/phpstan": "^1.2",
     "phpunit/phpunit": "^9.5",
