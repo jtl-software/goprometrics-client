@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c3031439af607d06b1a825b50f71d9b",
+    "content-hash": "d7a0e995698d699d2408fc7bb3a1e1bf",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -331,21 +331,21 @@
         },
         {
             "name": "jtl/php-generic-collection",
-            "version": "0.4.6",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jtl-software/php-generic-collection.git",
-                "reference": "246d25c0baeed4ab4efa27417aa3be12e5206143"
+                "reference": "8b5f9e5b5f695f94541731c9e599110aea2b0d40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jtl-software/php-generic-collection/zipball/246d25c0baeed4ab4efa27417aa3be12e5206143",
-                "reference": "246d25c0baeed4ab4efa27417aa3be12e5206143",
+                "url": "https://api.github.com/repos/jtl-software/php-generic-collection/zipball/8b5f9e5b5f695f94541731c9e599110aea2b0d40",
+                "reference": "8b5f9e5b5f695f94541731c9e599110aea2b0d40",
                 "shasum": ""
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.19",
-                "infection/infection": "^0.25",
+                "friendsofphp/php-cs-fixer": "^3.5",
+                "infection/infection": "^0.26",
                 "php": "^8.0",
                 "phpstan/phpstan": "^1.2",
                 "phpunit/phpunit": "^9.5",
@@ -364,9 +364,9 @@
             "description": "An implementation of a generic collection for PHP",
             "support": {
                 "issues": "https://github.com/jtl-software/php-generic-collection/issues",
-                "source": "https://github.com/jtl-software/php-generic-collection/tree/0.4.6"
+                "source": "https://github.com/jtl-software/php-generic-collection/tree/0.5.0"
             },
-            "time": "2022-01-17T15:23:47+00:00"
+            "time": "2022-02-25T09:55:28+00:00"
         },
         {
             "name": "psr/http-client",
@@ -6254,5 +6254,5 @@
     "platform-overrides": {
         "php": "8.0"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.0.0"
 }

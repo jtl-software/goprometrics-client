@@ -7,8 +7,8 @@
     "php": "^8.0",
     "ext-curl": "*",
     "ext-json": "*",
-    "jtl/php-generic-collection": "^0.4",
-    "guzzlehttp/guzzle": "^7.2"
+    "guzzlehttp/guzzle": "^7.2",
+    "jtl/php-generic-collection": "^0.5"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^v2.19",
