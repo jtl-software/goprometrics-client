@@ -25,7 +25,7 @@ class GaugeTest extends TestCase
             'PUT',
             "{$baseUri}/gauge/{$namespace}/{$name}/1",
             [
-                'body' => "labels=foo:bar&help=This could be helpful&useSet=0",
+                'body' => "labels=foo%3Abar&help=This could be helpful&useSet=0",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
@@ -47,7 +47,7 @@ class GaugeTest extends TestCase
             'PUT',
             "{$baseUri}/gauge/{$namespace}/{$name}/2",
             [
-                'body' => "labels=foo:bar&help=This could be helpful&useSet=0",
+                'body' => "labels=foo%3Abar&help=This could be helpful&useSet=0",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
@@ -69,7 +69,7 @@ class GaugeTest extends TestCase
             'PUT',
             "{$baseUri}/gauge/{$namespace}/{$name}/-1",
             [
-                'body' => "labels=foo:bar&help=This could be helpful&useSet=0",
+                'body' => "labels=foo%3Abar&help=This could be helpful&useSet=0",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
@@ -91,7 +91,7 @@ class GaugeTest extends TestCase
             'PUT',
             "{$baseUri}/gauge/{$namespace}/{$name}/-2",
             [
-                'body' => "labels=foo:bar&help=This could be helpful&useSet=0",
+                'body' => "labels=foo%3Abar&help=This could be helpful&useSet=0",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
@@ -113,7 +113,7 @@ class GaugeTest extends TestCase
             'PUT',
             "{$baseUri}/gauge/{$namespace}/{$name}/2",
             [
-                'body' => "labels=foo:bar&help=This could be helpful&useSet=1",
+                'body' => "labels=foo%3Abar&help=This could be helpful&useSet=1",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
