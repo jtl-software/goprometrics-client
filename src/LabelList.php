@@ -38,7 +38,7 @@ class LabelList extends GenericCollection
     {
         $tagStrList = [];
         foreach ($this->itemList as $label) {
-            $tagStrList[] = "{$label->getKey()}:{$label->getValue()}";
+            $tagStrList[] = urlencode("{$label->getKey()}:{$label->getValue()}");
         }
         return implode(',', $tagStrList);
     }

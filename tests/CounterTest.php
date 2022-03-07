@@ -25,7 +25,7 @@ class CounterTest extends TestCase
             'PUT',
             "{$baseUri}/count/{$namespace}/{$name}",
             [
-                'body' => "labels=foo:bar&help=testing it",
+                'body' => "labels=foo%3Abar&help=testing it",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );

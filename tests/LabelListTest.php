@@ -49,6 +49,6 @@ class LabelListTest extends TestCase
         $this->assertEmpty($labelList->__toString());
 
         $labelList->add(new Label('foo', 'bar'));
-        $this->assertEquals('foo:bar', $labelList->__toString());
+        $this->assertEquals('foo%3Abar', $labelList->__toString());
     }
 }
