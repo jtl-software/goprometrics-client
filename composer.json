@@ -15,7 +15,7 @@
     "infection/infection": "^0.26.2",
     "phpstan/phpstan": "^1.2",
     "phpunit/phpunit": "^9.5",
-    "vimeo/psalm": "^4.9"
+    "vimeo/psalm": "^5.3"
   },
   "suggest": {
     "guzzlehttp/guzzle": "Required to interact with GoProm",
