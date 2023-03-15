@@ -6,11 +6,6 @@ namespace JTL\GoPrometrics\Client;
 
 use JTL\Generic\GenericCollection;
 
-/**
- * Class TagList
- *
- * @method Label offsetGet($offset)
- */
 class LabelList extends GenericCollection
 {
     public function __construct()
