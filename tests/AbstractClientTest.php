@@ -18,13 +18,18 @@ class AbstractClientTest extends TestCase
     public function itCanSendRequest(): void
     {
         $client = $this->createMock(ClientInterface::class);
+        $configurator = $this->createMock(GoPometricsConfigurator::class);
         $testUrl = 'https://example.com';
-        $sut = new class($client, $testUrl) extends AbstractClient {
+        $sut = new class($client, $configurator, $testUrl) extends AbstractClient {
             public function send(string $url, string $body = '', string $httpMethod = 'PUT', array $headers = []): void
             {
                 parent::send($url, $body, $httpMethod, $headers);
             }
         };
+
+        $configurator->expects(self::once())
+            ->method('isActive')
+            ->willReturn(true);
 
         $client->expects(self::once())
             ->method('request')
@@ -49,13 +54,18 @@ class AbstractClientTest extends TestCase
     public function itCanOverwriteContentTypeHeader(): void
     {
         $client = $this->createMock(ClientInterface::class);
+        $configurator = $this->createMock(GoPometricsConfigurator::class);
         $testUrl = 'https://example.com';
-        $sut = new class($client, $testUrl) extends AbstractClient {
+        $sut = new class($client, $configurator, $testUrl) extends AbstractClient {
             public function send(string $url, string $body = '', string $httpMethod = 'PUT', array $headers = []): void
             {
                 parent::send($url, $body, $httpMethod, $headers);
             }
         };
+
+        $configurator->expects(self::once())
+            ->method('isActive')
+            ->willReturn(true);
 
         $client->expects(self::once())
             ->method('request')
