@@ -8,15 +8,11 @@ use GuzzleHttp\ClientInterface;
 
 abstract class AbstractClient
 {
-    private ClientInterface $client;
-    protected string $baseUrl;
-
     public function __construct(
-        ClientInterface $client,
-        string $baseUrl
+        private readonly ClientInterface $client,
+        protected readonly GoPometricsConfigurator $configurator,
+        protected readonly string $baseUrl
     ) {
-        $this->client = $client;
-        $this->baseUrl = $baseUrl;
     }
 
     /**
@@ -28,6 +24,10 @@ abstract class AbstractClient
         string $httpMethod = 'PUT',
         array $headers = []
     ): void {
+        if (!$this->configurator->isActive()) {
+            return;
+        }
+
         if (!isset($headers['Content-Type'])) {
             $headers['Content-Type'] = "application/x-www-form-urlencoded";
         }
@@ -37,7 +37,7 @@ abstract class AbstractClient
             $url,
             [
                 'body' => $body,
-                'headers' => $headers
+                'headers' => $headers,
             ]
         );
     }

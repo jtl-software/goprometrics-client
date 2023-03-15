@@ -3,5 +3,5 @@ parameters:
         - src
         - tests
     level: 7
-    phpVersion: 74000
+    phpVersion: 81000
     checkMissingIterableValueType: false

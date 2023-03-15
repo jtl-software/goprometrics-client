@@ -4,7 +4,7 @@
   "description": "PHP-Client to use the JTL GoPrometrics Service",
   "license": "MIT",
   "require": {
-    "php": "^8.0",
+    "php": "^8.1",
     "ext-curl": "*",
     "ext-json": "*",
     "guzzlehttp/guzzle": "^7.2",
@@ -13,9 +13,9 @@
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^v2.19",
     "infection/infection": "^0.26.2",
-    "phpstan/phpstan": "^1.2",
+    "phpstan/phpstan": "^1.10",
     "phpunit/phpunit": "^9.5",
-    "vimeo/psalm": "^4.9"
+    "vimeo/psalm": "^5.8"
   },
   "suggest": {
     "guzzlehttp/guzzle": "Required to interact with GoProm",
