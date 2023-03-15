@@ -20,7 +20,7 @@ class AbstractClientTest extends TestCase
         $client = $this->createMock(ClientInterface::class);
         $configurator = $this->createMock(GoPometricsConfigurator::class);
         $testUrl = 'https://example.com';
-        $sut = new class($client, $configurator, $testUrl) extends AbstractClient {
+        $sut = new class ($client, $configurator, $testUrl) extends AbstractClient {
             public function send(string $url, string $body = '', string $httpMethod = 'PUT', array $headers = []): void
             {
                 parent::send($url, $body, $httpMethod, $headers);
@@ -56,7 +56,7 @@ class AbstractClientTest extends TestCase
         $client = $this->createMock(ClientInterface::class);
         $configurator = $this->createMock(GoPometricsConfigurator::class);
         $testUrl = 'https://example.com';
-        $sut = new class($client, $configurator, $testUrl) extends AbstractClient {
+        $sut = new class ($client, $configurator, $testUrl) extends AbstractClient {
             public function send(string $url, string $body = '', string $httpMethod = 'PUT', array $headers = []): void
             {
                 parent::send($url, $body, $httpMethod, $headers);
