@@ -19,6 +19,10 @@ class Counter extends AbstractClient implements CounterInterface
         LabelList $tagList = null,
         string $help = ''
     ): void {
+        if ($tagList !== null) {
+            $tagList = $this->configurator->extendLabelList($tagList);
+        }
+
         $this->send(
             "{$this->baseUrl}/count/{$namespace}/{$name}",
             "labels={$tagList}&help={$help}"

@@ -20,6 +20,7 @@ class CounterTest extends TestCase
         $tagList[]  = new Label('foo', 'bar');
 
         $baseUri = uniqid('baseUri', true);
+        $configurator = new DefaultGoPometricsConfigurator();
         $clientMock = $this->createMock(Client::class);
         $clientMock->expects($this->once())->method('request')->with(
             'PUT',
@@ -30,7 +31,7 @@ class CounterTest extends TestCase
             ]
         );
 
-        $counter = new Counter($clientMock, $baseUri);
+        $counter = new Counter($clientMock, $configurator, $baseUri);
         $counter->count($namespace, $name, $tagList, 'testing it');
     }
 
@@ -40,6 +41,7 @@ class CounterTest extends TestCase
         $name = uniqid('name', true);
 
         $baseUri = uniqid('baseUri', true);
+        $configurator = new DefaultGoPometricsConfigurator();
         $clientMock = $this->createMock(Client::class);
         $clientMock->expects($this->once())->method('request')->with(
             'PUT',
@@ -50,7 +52,7 @@ class CounterTest extends TestCase
             ]
         );
 
-        $counter = new Counter($clientMock, $baseUri);
+        $counter = new Counter($clientMock, $configurator, $baseUri);
         $counter->count($namespace, $name);
     }
 }

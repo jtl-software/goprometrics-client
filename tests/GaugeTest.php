@@ -20,6 +20,7 @@ class GaugeTest extends TestCase
         $tagList[] = new Label('foo', 'bar');
 
         $baseUri = uniqid('baseUri', true);
+        $configurator = new DefaultGoPometricsConfigurator();
         $clientMock = $this->createMock(Client::class);
         $clientMock->expects($this->once())->method('request')->with(
             'PUT',
@@ -30,7 +31,7 @@ class GaugeTest extends TestCase
             ]
         );
 
-        $counter = new Gauge($clientMock, $baseUri);
+        $counter = new Gauge($clientMock, $configurator, $baseUri);
         $counter->inc($namespace, $name, $tagList, 'This could be helpful');
     }
 
@@ -42,6 +43,7 @@ class GaugeTest extends TestCase
         $tagList[] = new Label('foo', 'bar');
 
         $baseUri = uniqid('baseUri', true);
+        $configurator = new DefaultGoPometricsConfigurator();
         $clientMock = $this->createMock(Client::class);
         $clientMock->expects($this->once())->method('request')->with(
             'PUT',
@@ -52,7 +54,7 @@ class GaugeTest extends TestCase
             ]
         );
 
-        $counter = new Gauge($clientMock, $baseUri);
+        $counter = new Gauge($clientMock, $configurator, $baseUri);
         $counter->incBy($namespace, $name, 2, $tagList, 'This could be helpful');
     }
 
@@ -64,6 +66,7 @@ class GaugeTest extends TestCase
         $tagList[] = new Label('foo', 'bar');
 
         $baseUri = uniqid('baseUri', true);
+        $configurator = new DefaultGoPometricsConfigurator();
         $clientMock = $this->createMock(Client::class);
         $clientMock->expects($this->once())->method('request')->with(
             'PUT',
@@ -74,7 +77,7 @@ class GaugeTest extends TestCase
             ]
         );
 
-        $counter = new Gauge($clientMock, $baseUri);
+        $counter = new Gauge($clientMock, $configurator, $baseUri);
         $counter->dec($namespace, $name, $tagList, 'This could be helpful');
     }
 
@@ -86,6 +89,7 @@ class GaugeTest extends TestCase
         $tagList[] = new Label('foo', 'bar');
 
         $baseUri = uniqid('baseUri', true);
+        $configurator = new DefaultGoPometricsConfigurator();
         $clientMock = $this->createMock(Client::class);
         $clientMock->expects($this->once())->method('request')->with(
             'PUT',
@@ -96,7 +100,7 @@ class GaugeTest extends TestCase
             ]
         );
 
-        $counter = new Gauge($clientMock, $baseUri);
+        $counter = new Gauge($clientMock, $configurator, $baseUri);
         $counter->decBy($namespace, $name, 2, $tagList, 'This could be helpful');
     }
 
@@ -108,6 +112,7 @@ class GaugeTest extends TestCase
         $tagList[] = new Label('foo', 'bar');
 
         $baseUri = uniqid('baseUri', true);
+        $configurator = new DefaultGoPometricsConfigurator();
         $clientMock = $this->createMock(Client::class);
         $clientMock->expects($this->once())->method('request')->with(
             'PUT',
@@ -118,7 +123,7 @@ class GaugeTest extends TestCase
             ]
         );
 
-        $counter = new Gauge($clientMock, $baseUri);
+        $counter = new Gauge($clientMock, $configurator, $baseUri);
         $counter->set($namespace, $name, 2, $tagList, 'This could be helpful');
     }
 }

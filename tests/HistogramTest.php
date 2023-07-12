@@ -20,6 +20,7 @@ class HistogramTest extends TestCase
         $tagList[]  = new Label('foo', 'bar');
 
         $baseUri = uniqid('baseUri', true);
+        $configurator = new DefaultGoPometricsConfigurator();
         $clientMock = $this->createMock(Client::class);
         $clientMock->expects($this->once())->method('request')->with(
             'PUT',
@@ -30,7 +31,7 @@ class HistogramTest extends TestCase
             ]
         );
 
-        $counter = new Histogram($clientMock, $baseUri);
+        $counter = new Histogram($clientMock, $configurator, $baseUri);
         $counter->observe($namespace, $name, 0.002, [0.1, 0.5, 1.0, 5.0], $tagList, 'This could be helpful');
     }
 
@@ -40,6 +41,7 @@ class HistogramTest extends TestCase
         $name = uniqid('name', true);
 
         $baseUri = uniqid('baseUri', true);
+        $configurator = new DefaultGoPometricsConfigurator();
         $clientMock = $this->createMock(Client::class);
         $clientMock->expects($this->once())->method('request')->with(
             'PUT',
@@ -50,7 +52,7 @@ class HistogramTest extends TestCase
             ]
         );
 
-        $counter = new Histogram($clientMock, $baseUri);
+        $counter = new Histogram($clientMock, $configurator, $baseUri);
         $counter->observe($namespace, $name, 0.002, [0.1, 0.5, 1.0, 5.0], null, 'This could be helpful');
     }
 }
