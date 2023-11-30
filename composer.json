@@ -11,15 +11,11 @@
     "jtl/php-generic-collection": "^1.0"
   },
   "require-dev": {
-    "friendsofphp/php-cs-fixer": "^v3.15",
-    "infection/infection": "^0.26.2",
+    "friendsofphp/php-cs-fixer": "^3.40",
+    "infection/infection": "^0.27.8",
     "phpstan/phpstan": "^1.10",
-    "phpunit/phpunit": "^9.5",
-    "vimeo/psalm": "^5.8"
-  },
-  "suggest": {
-    "guzzlehttp/guzzle": "Required to interact with GoProm",
-    "jtl/php-generic-collection": "Required for TagList"
+    "phpunit/phpunit": "^10.4",
+    "vimeo/psalm": "^5.16"
   },
   "autoload": {
     "psr-4": {

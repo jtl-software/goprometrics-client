@@ -27,6 +27,7 @@ class LabelListTest extends TestCase
         $taglist = new LabelList();
 
         $this->expectException(\InvalidArgumentException::class);
+        /** @phpstan-ignore-next-line  */
         $taglist->add(new \stdClass());
     }
 

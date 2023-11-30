@@ -4,3 +4,4 @@ build/
 .php_cs.cache
 .php-cs-fixer.cache
 .phpunit.result.cache
+/.phpunit.cache/test-results

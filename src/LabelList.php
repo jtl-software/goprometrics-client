@@ -6,6 +6,9 @@ namespace JTL\GoPrometrics\Client;
 
 use JTL\Generic\GenericCollection;
 
+/**
+ * @extends GenericCollection<Label>
+ */
 class LabelList extends GenericCollection
 {
     public function __construct()
