@@ -4,11 +4,11 @@
   "description": "PHP-Client to use the JTL GoPrometrics Service",
   "license": "MIT",
   "require": {
-    "php": "^8.1",
+    "php": "^8.2",
     "ext-curl": "*",
     "ext-json": "*",
-    "guzzlehttp/guzzle": "^7.2",
-    "jtl/php-generic-collection": "^0.5"
+    "guzzlehttp/guzzle": "^7.8",
+    "jtl/php-generic-collection": "^1.0"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^v3.15",
@@ -29,9 +29,6 @@
   "autoload-dev": {
   },
   "config": {
-    "platform": {
-      "php": "8.1"
-    },
     "sort-packages": true,
     "allow-plugins": {
       "composer/package-versions-deprecated": true,
