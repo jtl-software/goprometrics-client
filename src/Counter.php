@@ -17,7 +17,8 @@ class Counter extends AbstractClient implements CounterInterface
         string $namespace,
         string $name,
         LabelList $tagList = null,
-        string $help = ''
+        string $help = '',
+        float $add = 1.0
     ): void {
         if ($tagList !== null) {
             $tagList = $this->configurator->extendLabelList($tagList);
@@ -25,7 +26,7 @@ class Counter extends AbstractClient implements CounterInterface
 
         $this->send(
             "{$this->baseUrl}/count/{$namespace}/{$name}",
-            "labels={$tagList}&help={$help}"
+            "labels={$tagList}&help={$help}&add={$add}"
         );
     }
 }
