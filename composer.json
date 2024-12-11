@@ -7,15 +7,15 @@
     "php": "^8.2 || ^8.3 || ^8.4",
     "ext-curl": "*",
     "ext-json": "*",
-    "guzzlehttp/guzzle": "^7.8",
+    "guzzlehttp/guzzle": "^7.9.2",
     "jtl/php-generic-collection": "^1.0"
   },
   "require-dev": {
-    "friendsofphp/php-cs-fixer": "^3.40",
-    "infection/infection": "^0.27.8",
-    "phpstan/phpstan": "^1.10",
-    "phpunit/phpunit": "^10.4",
-    "vimeo/psalm": "^5.16"
+    "friendsofphp/php-cs-fixer": "^3.65",
+    "infection/infection": "^0.27.11",
+    "phpstan/phpstan": "^1.12.12",
+    "phpunit/phpunit": "^10.5.39",
+    "vimeo/psalm": "^5.26.1"
   },
   "autoload": {
     "psr-4": {
