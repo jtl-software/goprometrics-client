@@ -4,7 +4,7 @@
   "description": "PHP-Client to use the JTL GoPrometrics Service",
   "license": "MIT",
   "require": {
-    "php": "^8.2",
+    "php": "^8.1 || ^8.2 || ^8.3",
     "ext-curl": "*",
     "ext-json": "*",
     "guzzlehttp/guzzle": "^7.8",
