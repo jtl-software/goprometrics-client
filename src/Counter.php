@@ -25,8 +25,8 @@ class Counter extends AbstractClient implements CounterInterface
         }
 
         $this->send(
-            "{$this->baseUrl}/count/{$namespace}/{$name}",
-            "labels={$tagList}&help={$help}&add={$add}"
+            "{$this->baseUrl}/count/{$namespace}/{$name}?add={$add}",
+            "labels={$tagList}&help={$help}"
         );
     }
 }

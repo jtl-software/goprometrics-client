@@ -24,9 +24,9 @@ class CounterTest extends TestCase
         $clientMock = $this->createMock(Client::class);
         $clientMock->expects($this->once())->method('request')->with(
             'PUT',
-            "{$baseUri}/count/{$namespace}/{$name}",
+            "{$baseUri}/count/{$namespace}/{$name}?add=1",
             [
-                'body' => "labels=foo%3Abar&help=testing it&add=1",
+                'body' => "labels=foo%3Abar&help=testing it",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
@@ -45,9 +45,9 @@ class CounterTest extends TestCase
         $clientMock = $this->createMock(Client::class);
         $clientMock->expects($this->once())->method('request')->with(
             'PUT',
-            "{$baseUri}/count/{$namespace}/{$name}",
+            "{$baseUri}/count/{$namespace}/{$name}?add=1",
             [
-                'body' => "labels=&help=&add=1",
+                'body' => "labels=&help=",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
@@ -69,9 +69,9 @@ class CounterTest extends TestCase
         $clientMock = $this->createMock(Client::class);
         $clientMock->expects($this->once())->method('request')->with(
             'PUT',
-            "{$baseUri}/count/{$namespace}/{$name}",
+            "{$baseUri}/count/{$namespace}/{$name}?add=3.14",
             [
-                'body' => "labels=&help=&add=3.14",
+                'body' => "labels=&help=",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
