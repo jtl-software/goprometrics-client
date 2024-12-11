@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * This File is part of JTL-Software
@@ -24,18 +26,24 @@ class Counter
     /**
      * @param string $namespace
      * @param string $name
-     * @param LabelList $tagList
+     * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @param float $add
+     * @throws GuzzleException
      */
-    public function count(string $namespace, string $name, LabelList $tagList = null, string $help = ''): void
-    {
-        $tagStr = (string) $tagList;
+    public function count(
+        string $namespace,
+        string $name,
+        LabelList $tagList = null,
+        string $help = '',
+        float $add = 1.0
+    ): void {
+        $tagStr = (string)$tagList;
         $this->client->request(
             'PUT',
             "{$this->baseUrl}/count/{$namespace}/{$name}",
             [
-                'body' => "labels={$tagStr}&help={$help}",
+                'body' => "labels={$tagStr}&help={$help}&add={$add}",
                 'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
             ]
         );
