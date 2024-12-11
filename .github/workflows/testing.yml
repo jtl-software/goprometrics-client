@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "8.4"
+         # - "8.4" not yet supported by psalm 5.26
           - "8.3"
           - "8.2"
 
