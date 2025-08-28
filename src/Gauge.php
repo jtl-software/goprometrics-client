@@ -71,7 +71,7 @@ class Gauge extends AbstractClient implements GaugeInterface
         LabelList $tagList = null,
         string $help = ''
     ): void {
-        $this->sendRequest($namespace, $name, $value * (-1), $tagList, $help);
+        $this->sendRequest($namespace, $name, $value * -1.0, $tagList, $help);
     }
 
     /**
