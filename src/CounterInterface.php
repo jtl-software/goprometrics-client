@@ -15,7 +15,7 @@ interface CounterInterface
     public function count(
         string $namespace,
         string $name,
-        LabelList $tagList = null,
+        ?LabelList $tagList = null,
         string $help = ''
     ): void;
 }

@@ -16,7 +16,7 @@ interface GaugeInterface
     public function inc(
         string $namespace,
         string $name,
-        LabelList $tagList = null,
+        ?LabelList $tagList = null,
         string $help = ''
     ): void;
 
@@ -32,7 +32,7 @@ interface GaugeInterface
         string $namespace,
         string $name,
         float $value,
-        LabelList $tagList = null,
+        ?LabelList $tagList = null,
         string $help = ''
     ): void;
 
@@ -46,7 +46,7 @@ interface GaugeInterface
     public function dec(
         string $namespace,
         string $name,
-        LabelList $tagList = null,
+        ?LabelList $tagList = null,
         string $help = ''
     ): void;
 
@@ -62,7 +62,7 @@ interface GaugeInterface
         string $namespace,
         string $name,
         float $value,
-        LabelList $tagList = null,
+        ?LabelList $tagList = null,
         string $help = ''
     ): void;
 
@@ -78,7 +78,7 @@ interface GaugeInterface
         string $namespace,
         string $name,
         float $value,
-        LabelList $tagList = null,
+        ?LabelList $tagList = null,
         string $help = ''
     ): void;
 }

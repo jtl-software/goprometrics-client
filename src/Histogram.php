@@ -20,7 +20,7 @@ class Histogram extends AbstractClient implements HistogramInterface
         string $name,
         float $value,
         array $buckets = [],
-        LabelList $tagList = null,
+        ?LabelList $tagList = null,
         string $help = ''
     ): void {
         $bucketStr = implode(',', $buckets);
