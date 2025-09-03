@@ -16,7 +16,7 @@ class Gauge extends AbstractClient implements GaugeInterface
     public function inc(
         string $namespace,
         string $name,
-        LabelList $tagList = null,
+        ?LabelList $tagList = null,
         string $help = ''
     ): void {
         $this->sendRequest($namespace, $name, 1, $tagList, $help);
@@ -34,7 +34,7 @@ class Gauge extends AbstractClient implements GaugeInterface
         string $namespace,
         string $name,
         float $value,
-        LabelList $tagList = null,
+        ?LabelList $tagList = null,
         string $help = ''
     ): void {
         $this->sendRequest($namespace, $name, $value, $tagList, $help);
@@ -50,7 +50,7 @@ class Gauge extends AbstractClient implements GaugeInterface
     public function dec(
         string $namespace,
         string $name,
-        LabelList $tagList = null,
+        ?LabelList $tagList = null,
         string $help = ''
     ): void {
         $this->sendRequest($namespace, $name, -1, $tagList, $help);
@@ -68,10 +68,10 @@ class Gauge extends AbstractClient implements GaugeInterface
         string $namespace,
         string $name,
         float $value,
-        LabelList $tagList = null,
+        ?LabelList $tagList = null,
         string $help = ''
     ): void {
-        $this->sendRequest($namespace, $name, $value * (-1), $tagList, $help);
+        $this->sendRequest($namespace, $name, $value * -1.0, $tagList, $help);
     }
 
     /**
@@ -86,7 +86,7 @@ class Gauge extends AbstractClient implements GaugeInterface
         string $namespace,
         string $name,
         float $value,
-        LabelList $tagList = null,
+        ?LabelList $tagList = null,
         string $help = ''
     ): void {
         $this->sendRequest($namespace, $name, $value, $tagList, $help, true);
@@ -105,7 +105,7 @@ class Gauge extends AbstractClient implements GaugeInterface
         string $namespace,
         string $name,
         float $value,
-        LabelList $tagList = null,
+        ?LabelList $tagList = null,
         string $help = '',
         bool $useSet = false
     ): void {

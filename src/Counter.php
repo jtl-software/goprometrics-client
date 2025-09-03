@@ -16,7 +16,7 @@ class Counter extends AbstractClient implements CounterInterface
     public function count(
         string $namespace,
         string $name,
-        LabelList $tagList = null,
+        ?LabelList $tagList = null,
         string $help = '',
         float $add = 1.0
     ): void {
