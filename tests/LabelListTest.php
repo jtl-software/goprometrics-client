@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use InvalidArgumentException;
+use stdClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \JTL\GoPrometrics\Client\LabelList
- */
+#[CoversClass(LabelList::class)]
 class LabelListTest extends TestCase
 {
     public function testCanBeUsed(): void
@@ -26,9 +27,9 @@ class LabelListTest extends TestCase
     {
         $taglist = new LabelList();
 
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         /** @phpstan-ignore-next-line  */
-        $taglist->add(new \stdClass());
+        $taglist->add(new stdClass());
     }
 
     public function testCanBeCreatedFromArray(): void

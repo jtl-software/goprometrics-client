@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\ClientInterface;
 
 abstract class AbstractClient
@@ -16,7 +17,8 @@ abstract class AbstractClient
     }
 
     /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @param array<string, string> $headers
+     * @throws GuzzleException
      */
     protected function send(
         string $url,

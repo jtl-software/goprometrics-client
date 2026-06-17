@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
+use GuzzleHttp\Exception\GuzzleException;
+
 class Histogram extends AbstractClient implements HistogramInterface
 {
     /**
      * @param string $namespace
      * @param string $name
      * @param float $value
-     * @param array|float[] $buckets
+     * @param array<float> $buckets
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function observe(
         string $namespace,

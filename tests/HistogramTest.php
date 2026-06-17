@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \JTL\GoPrometrics\Client\Histogram
- */
+#[CoversClass(Histogram::class)]
 class HistogramTest extends TestCase
 {
+    #[Test]
     public function testCanObserve(): void
     {
         $namespace = uniqid('namespace', true);
@@ -35,6 +36,7 @@ class HistogramTest extends TestCase
         $counter->observe($namespace, $name, 0.002, [0.1, 0.5, 1.0, 5.0], $tagList, 'This could be helpful');
     }
 
+    #[Test]
     public function testCanObserveWithoutLabels(): void
     {
         $namespace = uniqid('namespace', true);
@@ -54,5 +56,27 @@ class HistogramTest extends TestCase
 
         $counter = new Histogram($clientMock, $configurator, $baseUri);
         $counter->observe($namespace, $name, 0.002, [0.1, 0.5, 1.0, 5.0], null, 'This could be helpful');
+    }
+
+    #[Test]
+    public function testCanObserveWithEmptyBuckets(): void
+    {
+        $namespace = uniqid('namespace', true);
+        $name = uniqid('name', true);
+
+        $baseUri = uniqid('baseUri', true);
+        $configurator = new DefaultGoPometricsConfigurator();
+        $clientMock = $this->createMock(Client::class);
+        $clientMock->expects($this->once())->method('request')->with(
+            'PUT',
+            "{$baseUri}/observe/{$namespace}/{$name}/1",
+            [
+                'body' => "labels=&buckets=&help=",
+                'headers' => ['Content-Type' => "application/x-www-form-urlencoded"]
+            ]
+        );
+
+        $counter = new Histogram($clientMock, $configurator, $baseUri);
+        $counter->observe($namespace, $name, 1.0);
     }
 }

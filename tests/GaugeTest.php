@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \JTL\GoPrometrics\Client\Gauge
- */
+#[CoversClass(Gauge::class)]
 class GaugeTest extends TestCase
 {
+    #[Test]
     public function testCanInc(): void
     {
         $namespace = uniqid('namespace', true);
@@ -35,6 +36,7 @@ class GaugeTest extends TestCase
         $counter->inc($namespace, $name, $tagList, 'This could be helpful');
     }
 
+    #[Test]
     public function testCanIncBy(): void
     {
         $namespace = uniqid('namespace', true);
@@ -58,6 +60,7 @@ class GaugeTest extends TestCase
         $counter->incBy($namespace, $name, 2, $tagList, 'This could be helpful');
     }
 
+    #[Test]
     public function testCanDec(): void
     {
         $namespace = uniqid('namespace', true);
@@ -81,6 +84,7 @@ class GaugeTest extends TestCase
         $counter->dec($namespace, $name, $tagList, 'This could be helpful');
     }
 
+    #[Test]
     public function testCanDecBy(): void
     {
         $namespace = uniqid('namespace', true);
@@ -104,6 +108,7 @@ class GaugeTest extends TestCase
         $counter->decBy($namespace, $name, 2, $tagList, 'This could be helpful');
     }
 
+    #[Test]
     public function testCanSet(): void
     {
         $namespace = uniqid('namespace', true);
