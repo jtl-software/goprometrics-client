@@ -10,20 +10,19 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class DefaultGoPometricsConfigurator
  *
  * @package JTL\GoPrometrics\Client
- *
- * @covers \JTL\GoPrometrics\Client\DefaultGoPometricsConfigurator
  */
+#[CoversClass(DefaultGoPometricsConfigurator::class)]
 class DefaultGoPometricsConfiguratorTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function canExtendLabelList(): void
     {
         $configurator = new DefaultGoPometricsConfigurator();

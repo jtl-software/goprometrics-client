@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use GuzzleHttp\ClientInterface;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \JTL\GoPrometrics\Client\AbstractClient
- */
+#[CoversClass(AbstractClient::class)]
 class AbstractClientTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function itCanSendRequest(): void
     {
         $client = $this->createMock(ClientInterface::class);
@@ -48,9 +46,7 @@ class AbstractClientTest extends TestCase
         $sut->send('/foo/bar', 'my-body-rocks', 'BEER', ['X-TEST-HEADER' => 'some-value']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function itCanOverwriteContentTypeHeader(): void
     {
         $client = $this->createMock(ClientInterface::class);
@@ -79,5 +75,27 @@ class AbstractClientTest extends TestCase
             );
 
         $sut->send('', '', '', ['Content-Type' => 'application/beer']);
+    }
+
+    #[Test]
+    public function itDoesNotSendWhenInactive(): void
+    {
+        $client = $this->createMock(ClientInterface::class);
+        $configurator = $this->createMock(GoPometricsConfigurator::class);
+        $sut = new class ($client, $configurator, 'https://example.com') extends AbstractClient {
+            public function send(string $url, string $body = '', string $httpMethod = 'PUT', array $headers = []): void
+            {
+                parent::send($url, $body, $httpMethod, $headers);
+            }
+        };
+
+        $configurator->expects(self::once())
+            ->method('isActive')
+            ->willReturn(false);
+
+        $client->expects(self::never())
+            ->method('request');
+
+        $sut->send('/foo/bar', 'body', 'PUT', []);
     }
 }

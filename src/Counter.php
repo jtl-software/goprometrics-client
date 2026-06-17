@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
+use GuzzleHttp\Exception\GuzzleException;
+
 class Counter extends AbstractClient implements CounterInterface
 {
     /**
@@ -11,7 +13,7 @@ class Counter extends AbstractClient implements CounterInterface
      * @param string $name
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function count(
         string $namespace,

@@ -6,8 +6,8 @@ namespace JTL\GoPrometrics\Client;
 
 class Label
 {
-    private string $key;
-    private string $value;
+    private readonly string $key;
+    private readonly string $value;
 
     public function __construct(string $key, string $value)
     {

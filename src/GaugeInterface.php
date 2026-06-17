@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace JTL\GoPrometrics\Client;
 
+use GuzzleHttp\Exception\GuzzleException;
+
 interface GaugeInterface
 {
     /**
@@ -11,7 +13,7 @@ interface GaugeInterface
      * @param string $name
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function inc(
         string $namespace,
@@ -26,7 +28,7 @@ interface GaugeInterface
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function incBy(
         string $namespace,
@@ -41,7 +43,7 @@ interface GaugeInterface
      * @param string $name
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function dec(
         string $namespace,
@@ -56,7 +58,7 @@ interface GaugeInterface
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function decBy(
         string $namespace,
@@ -72,7 +74,7 @@ interface GaugeInterface
      * @param float $value
      * @param LabelList|null $tagList
      * @param string $help
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function set(
         string $namespace,
