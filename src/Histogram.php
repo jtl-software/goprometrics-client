@@ -12,7 +12,7 @@ class Histogram extends AbstractClient implements HistogramInterface
      * @param string $namespace
      * @param string $name
      * @param float $value
-     * @param array|float[] $buckets
+     * @param array<float> $buckets
      * @param LabelList|null $tagList
      * @param string $help
      * @throws GuzzleException

@@ -10,7 +10,7 @@ interface HistogramInterface
      * @param string $namespace
      * @param string $name
      * @param float $value
-     * @param array $buckets
+     * @param array<float> $buckets
      * @param LabelList|null $tagList
      * @param string $help
      */

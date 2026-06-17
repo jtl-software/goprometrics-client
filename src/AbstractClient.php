@@ -17,6 +17,7 @@ abstract class AbstractClient
     }
 
     /**
+     * @param array<string, string> $headers
      * @throws GuzzleException
      */
     protected function send(

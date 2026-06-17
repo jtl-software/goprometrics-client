@@ -17,7 +17,7 @@ class LabelList extends GenericCollection
     }
 
     /**
-     * @param array $itemList
+     * @param array<string, string> $itemList
      * @return LabelList
      */
     public static function create(array $itemList): LabelList
