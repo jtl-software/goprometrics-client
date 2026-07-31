@@ -7,7 +7,7 @@
     "php": "^8.3 || ^8.4 || ^8.5",
     "ext-curl": "*",
     "ext-json": "*",
-    "guzzlehttp/guzzle": "^7.12.0",
+    "guzzlehttp/guzzle": "^8.0.1",
     "jtl/php-generic-collection": "^1.0.1"
   },
   "require-dev": {
